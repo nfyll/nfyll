@@ -20,7 +20,9 @@ const navLinks: Array<{ href: string; label: string }> = [
   { href: '/about', label: 'About' },
   { href: '/clubs', label: 'Clubs' },
   { href: '/schedule', label: 'Schedule' },
-  { href: '/sponsors', label: 'Sponsors' },
+  // Sponsors hidden until FL charitable-solicitation registration renews.
+  // Page route still exists at /sponsors — just unlinked from nav.
+  // { href: '/sponsors', label: 'Sponsors' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -319,7 +321,6 @@ const navLinks: Array<{ href: string; label: string }> = [
           <li><a href="/about">About</a></li>
           <li><a href="/clubs">Member Clubs</a></li>
           <li><a href="/schedule">Schedule</a></li>
-          <li><a href="/sponsors">Sponsors</a></li>
         </ul>
       </div>
       <div>
