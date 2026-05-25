@@ -1,45 +1,129 @@
 ---
 import type { Game } from '../lib/leagueops';
-export interface Props { game: Game }
-const { game } = Astro.props;
+export interface Props { game: Game; showDate?: boolean }
+const { game, showDate = false } = Astro.props;
 const start = new Date(game.startsAt);
-const dateStr = start.toLocaleDateString('en-US', {
-  weekday: 'short', month: 'short', day: 'numeric',
+const dateChipDay = start.toLocaleDateString('en-US', {
+  weekday: 'short',
   timeZone: 'America/New_York',
-});
+}).toUpperCase();
+const dateChipDate = start.toLocaleDateString('en-US', {
+  month: 'short', day: 'numeric',
+  timeZone: 'America/New_York',
+}).toUpperCase();
 const timeStr = start.toLocaleTimeString('en-US', {
   hour: 'numeric', minute: '2-digit',
   timeZone: 'America/New_York',
 });
+const fieldShort = game.venue.name.replace(/^.*?(Field\s*\d+).*$/, '$1');
+// Division → pill class
+const divPillClass = game.divisionId.includes('4v4')
+  ? 'div-4v4'
+  : game.divisionId.includes('7v7')
+    ? 'div-7v7'
+    : 'div-10v10';
+const statusLabel = game.status === 'postponed' ? 'Postponed'
+  : game.status === 'cancelled' ? 'Cancelled'
+  : null;
 ---
-<a class="schedule-card" href={game.externalUrl ?? '#'}>
-  <div class="when">
-    <strong>{dateStr}</strong>
-    <span>{timeStr}</span>
+<article class="schedule-card">
+  <div class="card-head">
+    <span class="date-chip" aria-label={`${dateChipDay} ${dateChipDate}`}>
+      <span class="date-chip-day">{dateChipDay}</span>
+      <span class="date-chip-date">{dateChipDate}</span>
+    </span>
+    <span class="time">{timeStr}</span>
   </div>
   <div class="matchup">
-    <span class="team">{game.awayTeamId}</span>
-    <span class="at">@</span>
     <span class="team">{game.homeTeamId}</span>
+    <span class="vs">vs</span>
+    <span class="team">{game.awayTeamId}</span>
   </div>
-  <div class="venue">{game.venue.name}</div>
-  <div class="division">{game.divisionId}{game.status === 'postponed' ? ' · Postponed' : game.status === 'cancelled' ? ' · Cancelled' : ''}</div>
-</a>
+  <div class="meta">
+    <span class="field">{fieldShort} · Julington Creek</span>
+  </div>
+  <div class="card-foot">
+    <span class={`division-pill ${divPillClass}`}>{game.divisionId}</span>
+    {statusLabel && <span class="status-note">{statusLabel}</span>}
+  </div>
+</article>
 <style>
   .schedule-card {
-    display: block;
-    padding: 1rem 1.25rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column;
+    padding: 1rem 1.15rem 0.9rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
     border-radius: 8px;
-    color: white; text-decoration: none;
-    transition: background 0.15s;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
   }
-  .schedule-card:hover { background: rgba(255,255,255,0.08); }
-  .when { display: flex; gap: 0.75rem; align-items: baseline; color: var(--muted-light); font-size: 0.9rem; }
-  .when strong { color: white; font-size: 1rem; }
-  .matchup { margin-top: 0.4rem; font-size: 1.05rem; font-weight: 600; display: flex; gap: 0.5rem; align-items: center; }
-  .matchup .at { color: var(--muted-light); font-weight: 400; }
-  .venue { margin-top: 0.25rem; font-size: 0.85rem; color: var(--muted-light); }
-  .division { margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-light); text-transform: uppercase; letter-spacing: 0.05em; }
+  .schedule-card:hover {
+    border-color: var(--sunshine);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+  }
+  .card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.55rem;
+  }
+  .date-chip {
+    display: inline-flex; align-items: baseline; gap: 0.35rem;
+    padding: 0.22rem 0.55rem;
+    background: var(--sunshine);
+    color: var(--white);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .date-chip-day { opacity: 0.85; }
+  .time {
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'tnum' 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .matchup {
+    font-size: 1.02rem;
+    color: var(--ink);
+    line-height: 1.35;
+    display: flex; flex-wrap: wrap;
+    align-items: center; gap: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+  .team { font-weight: 600; }
+  .vs { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
+  .meta {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-bottom: 0.7rem;
+  }
+  .card-foot {
+    display: flex; align-items: center; gap: 0.55rem;
+    margin-top: auto;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--hairline);
+  }
+  .division-pill {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+  }
+  .div-4v4 { background: var(--sand-gold-soft); color: #8a5a00; }
+  .div-7v7 { background: var(--sunshine-soft); color: #b04a13; }
+  .div-10v10 { background: rgba(27, 77, 126, 0.10); color: var(--river-blue); }
+  .status-note {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #b04a13;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 </style>

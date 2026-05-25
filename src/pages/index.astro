@@ -18,15 +18,57 @@ const nextGames = inSeason
       .filter((g) => new Date(g.startsAt) > new Date())
       .slice(0, 4)
   : [];
+
+const eyebrow = inSeason ? `${active[0].name.toUpperCase()} · IN-SEASON` : 'OFF-SEASON';
+const headline = inSeason
+  ? 'Saturday games at Julington Creek'
+  : 'North Florida Youth Lacrosse League';
+const subhead = inSeason
+  ? '8 clubs. PK–8 boys. One field, one morning a week, February through May.'
+  : 'Boys youth lacrosse, grades PK–8, across northeast Florida. Eight member clubs. Next season opens January 2027.';
 ---
-<Base title="Home" active="/">
-  <section class="hero">
-    <h1>North Florida Youth Lacrosse League</h1>
-    <p>Spring rec lacrosse for youth players across northeast Florida.</p>
+<Base title={undefined} active="/">
+  <section class="home-hero">
+    <div class="home-hero-inner">
+      <div class="home-hero-text">
+        <span class="eyebrow">{eyebrow}</span>
+        <h1>{headline}</h1>
+        <p class="subhead">{subhead}</p>
+        <div class="cta-row">
+          {inSeason ? (
+            <>
+              <a class="btn btn-primary" href="/schedule">This weekend's games →</a>
+              <a class="btn btn-text" href="/clubs">Find a club near you →</a>
+            </>
+          ) : (
+            <>
+              <a class="btn btn-primary" href="/schedule">Browse the 2026 archive →</a>
+              <a class="btn btn-text" href="/clubs">Meet the 8 member clubs →</a>
+            </>
+          )}
+        </div>
+      </div>
+      <div class="home-hero-map" aria-hidden="true">
+        <img src="/hero-map.svg" alt="" loading="eager" />
+      </div>
+    </div>
   </section>
+
+  {!inSeason && lastSeason && (
+    <aside class="offseason-banner">
+      <div class="container offseason-banner-inner">
+        <div>
+          <strong>Off-season.</strong>
+          Next games February 2027 — the {lastSeason.name} archive is open.
+        </div>
+        <a href="/schedule" class="banner-link">Browse the archive →</a>
+      </div>
+    </aside>
+  )}
+
   <div class="container">
-    {inSeason ? (
-      <>
+    {inSeason && (
+      <section class="upcoming">
         <h2>Upcoming games</h2>
         {nextGames.length > 0 ? (
           <div class="schedule-list">
@@ -35,39 +77,188 @@ const nextGames = inSeason
         ) : (
           <p class="empty-state">No games scheduled for the next few days. <a href="/schedule">See full schedule →</a></p>
         )}
-        <p><a href="/schedule">Full schedule →</a></p>
-      </>
-    ) : upcoming ? (
-      <div class="empty-state">
-        <strong>{upcoming.name}</strong> opens {new Date(upcoming.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.
-        {upcoming.registrationOpensAt && (
-          <> Registration opens {new Date(upcoming.registrationOpensAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}.</>
-        )}
-        {upcoming.registrationUrl && (
-          <> <a href={upcoming.registrationUrl}>Register →</a></>
-        )}
-      </div>
-    ) : (
-      <div class="empty-state">
-        <strong>Next season opens January 2027.</strong>
-        {lastSeason && (
-          <div style="margin-top: 0.75rem; font-size: 0.9rem;">
-            Last completed: <strong>{lastSeason.name}</strong> ·
-            <> <a href="/schedule">Browse the archive →</a></>
-          </div>
-        )}
-      </div>
+        <p style="margin-top: 1rem;"><a href="/schedule">Full schedule →</a></p>
+      </section>
     )}
 
-    <h2>Member clubs</h2>
-    <ClubGrid />
+    {/* What is NFYLL — 3 info nuggets at a glance */}
+    <section class="nuggets">
+      <h2>What is NFYLL?</h2>
+      <div class="nugget-grid">
+        <div class="nugget">
+          <span class="nugget-eyebrow">Who plays</span>
+          <h3>Boys, PK–8th grade</h3>
+          <p>Eight member clubs across northeast Florida send teams. Girls compete in NEFGYLL, a separate league.</p>
+        </div>
+        <div class="nugget">
+          <span class="nugget-eyebrow">When</span>
+          <h3>One Saturday a week, Feb–May</h3>
+          <p>Spring rec season only — typically eight Saturdays plus a season-ending jamboree.</p>
+        </div>
+        <div class="nugget">
+          <span class="nugget-eyebrow">Where</span>
+          <h3>One field, one venue</h3>
+          <p>All games at Julington Creek Plantation Park · 3060 Racetrack Rd, St. Johns, FL.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="clubs-section">
+      <h2>Member clubs</h2>
+      <p class="lede">Eight clubs cooperate to run the league. Pick the one nearest you to register your player.</p>
+      <ClubGrid />
+    </section>
   </div>
 </Base>
+
 <style>
+  /* HERO */
+  .home-hero {
+    background: var(--sky-wash);
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+    position: relative;
+  }
+  .home-hero-inner {
+    position: relative;
+    max-width: 1200px; margin: 0 auto;
+    padding: 3.5rem 1.5rem 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+  }
+  .home-hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
+  }
+  .home-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: var(--deep-river);
+    margin: 0.5rem 0 1rem;
+  }
+  .home-hero .subhead {
+    color: var(--ink);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.5;
+    max-width: 540px;
+    margin: 0 0 1.5rem;
+  }
+  .home-hero-map {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 65%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.95;
+    mask-image: linear-gradient(to right, transparent 0%, black 25%, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%, black 100%);
+  }
+  .home-hero-map img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+  @media (max-width: 760px) {
+    .home-hero-inner { padding: 2.5rem 1.5rem 2.25rem; }
+    .home-hero-map { display: none; }
+  }
+
+  /* CTAs */
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center;
+    padding: 0.7rem 1.25rem;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.15s, color 0.15s;
+  }
+  .btn-primary {
+    background: var(--sunshine);
+    color: var(--white);
+    box-shadow: 0 2px 6px rgba(242, 130, 60, 0.25);
+  }
+  .btn-primary:hover {
+    background: #e1701e;
+    color: var(--white);
+    transform: translateY(-1px);
+  }
+  .btn-text {
+    color: var(--river-blue);
+    padding-left: 0.5rem; padding-right: 0.5rem;
+  }
+  .btn-text:hover { color: var(--sunshine); }
+
+  /* OFF-SEASON banner */
+  .offseason-banner {
+    background: var(--sand-gold);
+    color: var(--ink);
+  }
+  .offseason-banner-inner {
+    display: flex; gap: 1rem;
+    align-items: center; justify-content: space-between;
+    padding-top: 0.85rem; padding-bottom: 0.85rem;
+    font-size: 0.95rem;
+  }
+  .offseason-banner-inner strong { font-weight: 700; }
+  .banner-link {
+    color: var(--deep-river);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .banner-link:hover { color: var(--ink); }
+  @media (max-width: 600px) {
+    .offseason-banner-inner { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  }
+
+  /* Section utilities */
+  .lede { color: var(--muted); font-size: 1rem; max-width: 680px; }
+
+  /* NUGGETS */
+  .nuggets { margin: 3rem 0 1rem; }
+  .nugget-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  @media (max-width: 880px) { .nugget-grid { grid-template-columns: 1fr; } }
+  .nugget {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.25rem 1.25rem 1.1rem;
+    box-shadow: var(--shadow-card);
+  }
+  .nugget-eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sunshine);
+    margin-bottom: 0.35rem;
+  }
+  .nugget h3 {
+    margin: 0 0 0.4rem; font-size: 1.05rem;
+    color: var(--deep-river);
+  }
+  .nugget p {
+    color: var(--ink); font-size: 0.92rem;
+    margin: 0; line-height: 1.5;
+  }
+
+  /* SCHEDULE LIST (used on home for upcoming games) */
   .schedule-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.85rem;
     margin: 1rem 0;
   }
+
+  .clubs-section { margin-bottom: 3rem; }
+  .clubs-section h2 { margin-top: 3rem; }
 </style>

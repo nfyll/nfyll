@@ -1,8 +1,9 @@
 ---
 /**
- * Hard-coded member-club list. Roster confirmed by Dave 2026-05-25 — 8 clubs.
+ * Hard-coded member-club list. 8 clubs confirmed by Dave 2026-05-25.
  * Logos for the 3 newer clubs (Bold City Eagles, Redhawks, Bulldogs LC)
- * haven't been sourced yet; render as initials in a colored bubble for now.
+ * not yet sourced — rendered as colored-square monogram badges in the
+ * meantime, consistent with the bordered-square frame of real logos.
  */
 import ameliaIsland from '../assets/brand/clubs/amelia-island.png';
 import creeks from '../assets/brand/clubs/creeks.png';
@@ -10,61 +11,131 @@ import filc from '../assets/brand/clubs/filc.png';
 import jaxLax from '../assets/brand/clubs/jax-lax.png';
 import ponteVedra from '../assets/brand/clubs/ponte-vedra.png';
 
-type LogoClub = { name: string; logo: { src: string; width: number; height: number }; url: string };
-type InitialsClub = { name: string; initials: string; url: string };
-type ClubEntry = LogoClub | InitialsClub;
+type LogoClub = {
+  name: string; town: string;
+  logo: { src: string; width: number; height: number };
+  url?: string;
+};
+type MonogramClub = {
+  name: string; town: string;
+  monogram: string; color: string;
+  url?: string;
+};
+type ClubEntry = LogoClub | MonogramClub;
 function isLogoClub(c: ClubEntry): c is LogoClub { return 'logo' in c; }
 
 const clubs: ClubEntry[] = [
-  { name: 'Amelia Island Hammerheads',     logo: ameliaIsland, url: '#' },
-  { name: 'Bold City Eagles',              initials: 'BC',     url: '#' },
-  { name: 'Bulldogs LC',                   initials: 'BLC',    url: '#' },
-  { name: 'Creeks Youth Lacrosse',         logo: creeks,       url: 'https://creekslax.com' },
-  { name: 'Fleming Island Lacrosse Club',  logo: filc,         url: 'https://filc.us' },
-  { name: 'Jax Lax',                       logo: jaxLax,       url: '#' },
-  { name: 'Ponte Vedra Riptide Lacrosse',  logo: ponteVedra,   url: '#' },
-  { name: 'Redhawks',                      initials: 'RH',     url: '#' },
+  { name: 'Amelia Island Hammerheads',     town: 'Amelia Island, FL',     logo: ameliaIsland },
+  { name: 'Bold City Eagles',              town: 'Jacksonville, FL',      monogram: 'BC',  color: '#1B4D7E' },
+  { name: 'Bulldogs LC',                   town: 'Northeast Florida',     monogram: 'BLC', color: '#103657' },
+  { name: 'Creeks Youth Lacrosse',         town: 'St. Johns, FL',         logo: creeks,   url: 'https://creekslax.com' },
+  { name: 'Fleming Island Lacrosse Club',  town: 'Fleming Island, FL',    logo: filc,     url: 'https://filc.us' },
+  { name: 'Jax Lax',                       town: 'Jacksonville, FL',      logo: jaxLax },
+  { name: 'Ponte Vedra Riptide Lacrosse',  town: 'Ponte Vedra, FL',       logo: ponteVedra },
+  { name: 'Redhawks',                      town: 'Gainesville, FL',       monogram: 'RH',  color: '#F2823C' },
 ];
 ---
 <div class="club-grid">
-  {clubs.map((c) => (
-    <a class="club-card" href={c.url} target={c.url === '#' ? undefined : '_blank'} rel="noopener">
-      {isLogoClub(c) ? (
-        <img src={c.logo.src} width={c.logo.width} height={c.logo.height} alt={`${c.name} logo`} loading="lazy" />
-      ) : (
-        <div class="initials-badge"><span>{c.initials}</span></div>
-      )}
-      <span>{c.name}</span>
-    </a>
-  ))}
+  {clubs.map((c) => {
+    const isLink = !!c.url;
+    const Wrapper: any = isLink ? 'a' : 'div';
+    const wrapperProps = isLink
+      ? { href: c.url, target: '_blank', rel: 'noopener', class: 'club-card club-card--link' }
+      : { class: 'club-card' };
+    return (
+      <Wrapper {...wrapperProps}>
+        <div class="club-logo-cell">
+          {isLogoClub(c) ? (
+            <img src={c.logo.src} width={c.logo.width} height={c.logo.height} alt={`${c.name} logo`} loading="lazy" />
+          ) : (
+            <div class="monogram" style={`background:${c.color}`}><span>{c.monogram}</span></div>
+          )}
+        </div>
+        <div class="club-text">
+          <span class="club-name">{c.name}</span>
+          <span class="club-town">{c.town}</span>
+        </div>
+        {isLink && <span class="ext-arrow" aria-hidden="true">↗</span>}
+      </Wrapper>
+    );
+  })}
 </div>
 <style>
   .club-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+    margin: 1.25rem 0 1rem;
+  }
+  @media (max-width: 900px) {
+    .club-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .club-grid { grid-template-columns: 1fr; }
   }
   .club-card {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 0.5rem; padding: 1.25rem 1rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  }
+  .club-card--link:hover {
+    border-color: var(--sunshine);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+  }
+  .club-logo-cell {
+    width: 64px; height: 64px;
     border-radius: 8px;
-    color: white; text-align: center; text-decoration: none;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .club-card:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.18);
-  }
-  .club-card img { width: 80px; height: 80px; object-fit: contain; }
-  .initials-badge {
-    width: 80px; height: 80px;
-    background: var(--brand-accent);
-    border-radius: 50%;
+    background: var(--sky-wash);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 1.4rem;
+    overflow: hidden;
   }
-  .club-card span { font-size: 0.9rem; font-weight: 500; }
+  .club-logo-cell img {
+    width: 56px; height: 56px;
+    object-fit: contain;
+  }
+  .monogram {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 36;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .monogram span { font-size: 1.4rem; }
+  .club-text {
+    display: flex; flex-direction: column;
+    min-width: 0;
+  }
+  .club-name {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 24;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--deep-river);
+    line-height: 1.2;
+  }
+  .club-town {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 0.2rem;
+  }
+  .ext-arrow {
+    position: absolute; top: 0.7rem; right: 0.85rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    transition: color 0.15s;
+  }
+  .club-card--link:hover .ext-arrow { color: var(--sunshine); }
 </style>

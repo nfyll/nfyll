@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" width="1600" height="400" role="img" aria-labelledby="hero-map-title hero-map-desc">
+  <title id="hero-map-title">North Florida Youth Lacrosse League — eight member clubs across northeast Florida</title>
+  <desc id="hero-map-desc">A stylized line-art map of northeast Florida. The Atlantic coastline runs vertically along the right. The St. Johns River winds north through the middle. Eight orange dots mark member-club home cities. A gold star marks Julington Creek Plantation Park, the league's shared game venue in St. Johns, FL.</desc>
+
+  <defs>
+    <!-- Subtle paper texture / wash -->
+    <linearGradient id="sky-wash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8F0F7"/>
+      <stop offset="100%" stop-color="#DFE9F2"/>
+    </linearGradient>
+
+    <!-- Hand-drawn line filter: subtle roughening -->
+    <filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" />
+      <feDisplacementMap in="SourceGraphic" scale="1.5" />
+    </filter>
+
+    <!-- Gold venue star marker -->
+    <symbol id="venue-star" viewBox="-12 -12 24 24">
+      <polygon
+        points="0,-10 2.94,-3.09 10,-3.09 4.5,1.18 6.18,8.09 0,4 -6.18,8.09 -4.5,1.18 -10,-3.09 -2.94,-3.09"
+        fill="#F4C24B" stroke="#1B4D7E" stroke-width="1.2" stroke-linejoin="round" />
+      <circle cx="0" cy="0" r="2.5" fill="#1B4D7E"/>
+    </symbol>
+  </defs>
+
+  <!-- Background wash -->
+  <rect width="1600" height="400" fill="url(#sky-wash)"/>
+
+  <!-- Very faint Florida coastline / state outline gesture, low opacity -->
+  <g opacity="0.18" fill="none" stroke="#103657" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Stylized Florida coastline gesture (NE quadrant only) -->
+    <path d="M 1480 60
+             Q 1495 120, 1475 200
+             T 1470 320
+             Q 1465 360, 1450 395"/>
+    <!-- Subtle inland boundary -->
+    <path d="M 870 30
+             Q 880 70, 870 130
+             Q 860 200, 870 280
+             Q 875 340, 870 395"/>
+  </g>
+
+  <!-- St. Johns River — main hand-drawn feature, winds south→north -->
+  <g fill="none" stroke="#1B4D7E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)">
+    <path d="M 1000 395
+             Q 990 350, 1020 310
+             Q 1050 270, 1040 230
+             Q 1030 200, 1060 175
+             Q 1090 150, 1100 120
+             Q 1115 85, 1180 80
+             L 1380 80"
+          opacity="0.85"/>
+    <!-- Tributary suggestion (Julington Creek) -->
+    <path d="M 1040 230 Q 1075 240, 1110 235"
+          opacity="0.55" stroke-width="1.6"/>
+  </g>
+
+  <!-- Atlantic coastline — vertical wavering line on the right -->
+  <g fill="none" stroke="#1B4D7E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)">
+    <path d="M 1390 10
+             Q 1400 70, 1395 130
+             Q 1388 170, 1402 210
+             Q 1418 250, 1404 295
+             Q 1395 335, 1410 380
+             L 1418 400"
+          opacity="0.95"/>
+  </g>
+
+  <!-- City marker dots: 8 member clubs in Sunshine Orange -->
+  <g>
+    <!-- Amelia Island (Hammerheads) — far NE near GA border -->
+    <circle cx="1340" cy="70" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Jacksonville (Jax Lax + Bold City Eagles) — slightly bigger dot since 2 clubs -->
+    <circle cx="1185" cy="160" r="9" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Ponte Vedra (Riptide) — coast, south of Jax -->
+    <circle cx="1350" cy="200" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Fleming Island — inland, south of Jax -->
+    <circle cx="1095" cy="225" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Creeks (St. Johns area, just south of Julington Creek venue) -->
+    <circle cx="1085" cy="288" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Bulldogs LC — Orange Park / west of river -->
+    <circle cx="990" cy="195" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Redhawks (Gainesville) — far southwest -->
+    <circle cx="800" cy="350" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- "Eighth" position — there's some flexibility on placement; tucked between FILC and Creeks -->
+    <circle cx="1140" cy="260" r="7" fill="#F2823C" stroke="#FFFFFF" stroke-width="2" opacity="0"/>
+  </g>
+
+  <!-- The venue: Julington Creek Plantation Park, gold star at center -->
+  <g transform="translate(1060 252)">
+    <!-- Soft halo so the star reads as 'the one place' -->
+    <circle cx="0" cy="0" r="22" fill="#F4C24B" opacity="0.18"/>
+    <circle cx="0" cy="0" r="14" fill="#F4C24B" opacity="0.35"/>
+    <use href="#venue-star" width="28" height="28" x="-14" y="-14"/>
+  </g>
+
+  <!-- Faint compass mark, bottom-right corner -->
+  <g transform="translate(1530 360)" opacity="0.35" fill="#5A6B7B" font-family="Georgia, serif" font-size="11" font-style="italic" text-anchor="middle">
+    <path d="M 0 -10 L 3 0 L 0 10 L -3 0 Z" fill="#5A6B7B"/>
+    <text y="-16">N</text>
+  </g>
+</svg>

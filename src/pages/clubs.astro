@@ -3,13 +3,43 @@ import Base from '../layouts/Base.astro';
 import ClubGrid from '../components/ClubGrid.astro';
 ---
 <Base title="Member Clubs" active="/clubs">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">EIGHT CLUBS</span>
+      <h1>Member clubs</h1>
+      <p class="lede">Eight independent youth programs across northeast Florida feed into NFYLL. Each runs its own practices, registration, and coaching. They come together every Saturday at Julington Creek.</p>
+    </div>
+  </section>
+
   <div class="container">
-    <h2>Member clubs</h2>
-    <p>
-      NFYLL is made up of {/* count handled in ClubGrid */} partner clubs across
-      northeast Florida. Each club runs its own program; NFYLL coordinates the
-      league season and inter-club play.
-    </p>
     <ClubGrid />
+
+    <aside class="get-started-card">
+      <h3>Want to play?</h3>
+      <p>Registration is handled by the individual clubs, not by NFYLL directly. Pick the club closest to you (or whichever your friends play for) and contact them about their spring season.</p>
+      <p style="margin-bottom: 0;">If you don't know which club covers your area, email <a href="mailto:board@nfyll.org">board@nfyll.org</a> and we'll point you to the right one.</p>
+    </aside>
   </div>
 </Base>
+
+<style>
+  .page-hero {
+    background: var(--sky-wash);
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem 0 2rem;
+  }
+  .page-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.4rem 0 0.75rem; }
+  .lede { color: var(--ink); font-size: 1rem; max-width: 720px; }
+
+  .get-started-card {
+    margin: 2.5rem 0 1rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 4px solid var(--sunshine);
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+  }
+  .get-started-card h3 { margin: 0 0 0.5rem; color: var(--deep-river); }
+  .get-started-card p { margin: 0 0 0.75rem; }
+</style>

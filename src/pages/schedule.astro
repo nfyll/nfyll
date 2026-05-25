@@ -18,78 +18,243 @@ const games = inSeason
     ? await getSeasonSchedule(lastSeason.slug)
     : [];
 
-// Group games by date for display
-type Group = { date: string; sortKey: number; games: typeof games };
+// Group games by date
+type Group = { date: string; sortKey: number; shortKey: string; games: typeof games };
 const groups = new Map<string, Group>();
 for (const g of games) {
   const d = new Date(g.startsAt);
   const dateKey = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' });
+  const shortKey = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' });
+  const slug = `d-${d.toISOString().slice(0, 10)}`;
   const sortKey = d.getTime();
-  if (!groups.has(dateKey)) groups.set(dateKey, { date: dateKey, sortKey, games: [] });
-  groups.get(dateKey)!.games.push(g);
+  if (!groups.has(slug)) groups.set(slug, { date: dateKey, sortKey, shortKey, games: [] });
+  groups.get(slug)!.games.push(g);
 }
-const orderedGroups = [...groups.values()].sort((a, b) => a.sortKey - b.sortKey);
-// Sort each day's games by start time
-for (const g of orderedGroups) {
-  g.games.sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
-}
+const orderedGroups = [...groups.entries()].sort((a, b) => a[1].sortKey - b[1].sortKey);
+for (const [, g] of orderedGroups) g.games.sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
 
+const allClubs = [...new Set(games.flatMap(g => [g.homeTeamId, g.awayTeamId]))].sort();
 const showingArchive = !inSeason && lastSeason && games.length > 0;
+const totalGames = games.length;
 ---
 <Base title="Schedule" active="/schedule">
-  <div class="container">
-    <h2>Schedule</h2>
-    {inSeason ? (
-      <p>Showing all games in <strong>{active[0].name}</strong>.</p>
-    ) : showingArchive ? (
-      <p class="archive-note">
-        <strong>Archive — {lastSeason.name}</strong> · {games.length} games across {orderedGroups.length} game days
-        <br />
-        <span class="archive-sub">Next season opens January 2027 · this is the historical record of last spring's play</span>
-      </p>
-    ) : upcoming ? (
-      <div class="empty-state">
-        <strong>{upcoming.name}</strong> opens {new Date(upcoming.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">{showingArchive ? 'ARCHIVE' : (inSeason ? 'IN SEASON' : 'OFF-SEASON')}</span>
+      <h1>{showingArchive ? `${lastSeason!.name} schedule` : 'Schedule'}</h1>
+      {showingArchive && (
+        <p class="lede">{totalGames} games across {orderedGroups.length} Saturdays at Julington Creek. Next season opens January 2027.</p>
+      )}
+      {inSeason && (
+        <p class="lede">All {active[0]!.name} games at Julington Creek Plantation Park. Times in Eastern.</p>
+      )}
+      {!inSeason && !showingArchive && upcoming && (
+        <p class="lede"><strong>{upcoming.name}</strong> opens {new Date(upcoming.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}. Schedule will appear here when the season starts.</p>
+      )}
+    </div>
+  </section>
+
+  {orderedGroups.length > 0 && (
+    <nav class="day-jumper" aria-label="Jump to game day">
+      <div class="container day-jumper-inner">
+        <span class="day-jumper-label">Jump to</span>
+        <div class="day-jumper-pills" role="list">
+          {orderedGroups.map(([slug, group]) => (
+            <a href={`#${slug}`} class="day-pill" role="listitem">{group.shortKey}</a>
+          ))}
+        </div>
+        <div class="club-filter-wrap">
+          <label for="club-filter" class="sr-only">Filter by club</label>
+          <select id="club-filter" class="club-filter">
+            <option value="">All clubs</option>
+            {allClubs.map((club) => <option value={club}>{club}</option>)}
+          </select>
+        </div>
       </div>
-    ) : (
+    </nav>
+  )}
+
+  <div class="container">
+    {orderedGroups.length === 0 && (
       <p class="empty-state">No schedule data yet.</p>
     )}
 
-    {orderedGroups.map((group) => (
-      <section class="day">
-        <h3>{group.date}</h3>
-        <div class="schedule-list">
-          {group.games.map((g) => <ScheduleCard game={g} />)}
+    {orderedGroups.map(([slug, group]) => (
+      <section class="day-section" id={slug}>
+        <h3 class="day-heading"><span>{group.date}</span></h3>
+        <div class="schedule-list" data-day-games>
+          {group.games.map((g) => (
+            <div data-game data-home={g.homeTeamId} data-away={g.awayTeamId}>
+              <ScheduleCard game={g} />
+            </div>
+          ))}
         </div>
       </section>
     ))}
   </div>
 </Base>
+
 <style>
-  .archive-note {
-    padding: 1rem 1.25rem;
-    background: rgba(255,255,255,0.04);
-    border-left: 3px solid var(--brand-accent);
-    border-radius: 4px;
-    margin: 1rem 0 2rem;
+  .page-hero {
+    background: var(--sky-wash);
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem 0 2rem;
   }
-  .archive-sub {
-    font-size: 0.85rem;
-    color: var(--muted-light);
+  .page-hero h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: 0.4rem 0 0.75rem;
   }
-  .day {
-    margin: 2rem 0;
+  .page-hero .lede { color: var(--ink); font-size: 1rem; max-width: 720px; margin: 0; }
+
+  /* Sticky day jumper */
+  .day-jumper {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--white);
+    border-bottom: 1px solid var(--hairline);
+    box-shadow: 0 2px 8px rgba(16, 54, 87, 0.04);
   }
-  .day h3 {
-    margin: 1.5rem 0 0.75rem;
-    font-size: 1.15rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    color: var(--brand-accent-light);
+  .day-jumper-inner {
+    display: flex; align-items: center; gap: 1rem;
+    padding-top: 0.65rem; padding-bottom: 0.65rem;
+    flex-wrap: wrap;
+  }
+  .day-jumper-label {
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .day-jumper-pills {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    flex: 1;
+  }
+  .day-pill {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: var(--white);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .day-pill:hover {
+    background: var(--sunshine-soft);
+    border-color: var(--sunshine);
+    color: var(--sunshine);
+  }
+  .day-pill.is-active {
+    background: var(--sunshine);
+    color: var(--white);
+    border-color: var(--sunshine);
+  }
+  .club-filter-wrap { margin-left: auto; }
+  .club-filter {
+    padding: 0.42rem 0.75rem;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    background: var(--white);
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--ink);
+    max-width: 220px;
+  }
+  .club-filter:focus { outline: 2px solid var(--sunshine); outline-offset: 1px; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  /* Day sections */
+  .day-section { margin: 2.25rem 0 0; scroll-margin-top: 4.5rem; }
+  .day-heading {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    color: var(--deep-river);
+    padding-top: 1rem;
+    border-top: 1px solid var(--sand-gold);
+    display: flex; align-items: baseline;
+  }
+  .day-heading span {
+    background: var(--white);
+    padding-right: 0.75rem;
+    margin-top: -1.55rem;
+    display: inline-block;
   }
   .schedule-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 0.85rem;
+    margin: 0 0 1rem;
   }
+  [data-game].is-hidden { display: none; }
+  .day-section.is-empty { display: none; }
 </style>
+
+<script is:inline>
+  (function () {
+    // Day-jumper active-state observer + click handling
+    const pills = document.querySelectorAll('.day-pill');
+    const sections = document.querySelectorAll('.day-section');
+    if (!pills.length || !sections.length) return;
+
+    // Smooth scroll respect — use built-in CSS scroll-margin-top
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        // active state set immediately on click for snappy feel
+        pills.forEach(p => p.classList.remove('is-active'));
+        pill.classList.add('is-active');
+      });
+    });
+
+    // IntersectionObserver: highlight pill matching the section in view
+    const map = new Map();
+    pills.forEach((pill) => {
+      const target = pill.getAttribute('href')?.slice(1);
+      if (target) map.set(target, pill);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          const pill = map.get(id);
+          if (pill) {
+            pills.forEach(p => p.classList.remove('is-active'));
+            pill.classList.add('is-active');
+          }
+        }
+      });
+    }, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
+    sections.forEach((s) => obs.observe(s));
+
+    // Club filter
+    const sel = document.getElementById('club-filter');
+    if (sel) {
+      sel.addEventListener('change', () => {
+        const val = sel.value;
+        document.querySelectorAll('[data-game]').forEach((el) => {
+          if (!val) {
+            el.classList.remove('is-hidden');
+          } else {
+            const home = el.getAttribute('data-home') || '';
+            const away = el.getAttribute('data-away') || '';
+            const match = home === val || away === val;
+            el.classList.toggle('is-hidden', !match);
+          }
+        });
+        // Hide day sections with no visible games
+        document.querySelectorAll('.day-section').forEach((sec) => {
+          const visible = sec.querySelectorAll('[data-game]:not(.is-hidden)').length;
+          sec.classList.toggle('is-empty', visible === 0);
+        });
+      });
+    }
+  })();
+</script>

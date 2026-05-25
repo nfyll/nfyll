@@ -2,14 +2,152 @@
 import Base from '../layouts/Base.astro';
 ---
 <Base title="Sponsors" active="/sponsors">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">SUPPORT YOUTH LACROSSE</span>
+      <h1>Sponsor NFYLL</h1>
+      <p class="lede">Every dollar goes directly to keeping the field open, the refs paid, and the league fees accessible across all eight clubs. We're an all-volunteer board — no salaries, no overhead office.</p>
+    </div>
+  </section>
+
   <div class="container">
-    <h2>Sponsors</h2>
-    <p>
-      NFYLL is a 501(c)(3) nonprofit. Sponsorships support youth lacrosse
-      across our member clubs.
-    </p>
-    <p class="empty-state">
-      Interested in sponsoring? Reach out to <a href="mailto:board@nfyll.org">board@nfyll.org</a>.
-    </p>
+    <section>
+      <h2>Who you'd reach</h2>
+      <p>NFYLL families converge on Julington Creek Plantation Park every Saturday morning, February through May — roughly nine consecutive weekends, ~190 games, hundreds of families per Saturday across our eight member clubs. Visible field-side signage, web mentions, and in-season recognition flow to sponsors at every tier.</p>
+    </section>
+
+    <section>
+      <h2>Tiers</h2>
+      <div class="tier-grid">
+        <div class="tier-card">
+          <span class="tier-eyebrow">Suggested</span>
+          <h3>Field Day</h3>
+          <p class="tier-amount">$250</p>
+          <ul>
+            <li>Logo + link on the sponsors page</li>
+            <li>Listed in our season-launch announcement</li>
+            <li>Recognition at the end-of-season jamboree</li>
+          </ul>
+        </div>
+        <div class="tier-card tier-card--featured">
+          <span class="tier-eyebrow">Most common</span>
+          <h3>Season</h3>
+          <p class="tier-amount">$1,000</p>
+          <ul>
+            <li>Everything in Field Day, plus</li>
+            <li>Field-side banner displayed every game day</li>
+            <li>Logo on team jerseys / patches (where applicable)</li>
+            <li>Honored at the season-opening Saturday</li>
+          </ul>
+        </div>
+        <div class="tier-card">
+          <span class="tier-eyebrow">Naming-level</span>
+          <h3>Title</h3>
+          <p class="tier-amount">$2,500+</p>
+          <ul>
+            <li>Everything in Season, plus</li>
+            <li>Title billing on the schedule / jamboree</li>
+            <li>Dedicated mention on every game-day field card</li>
+            <li>Custom recognition designed around your goals</li>
+          </ul>
+        </div>
+      </div>
+      <p class="cta-line">
+        Interested? Email <a href="mailto:board@nfyll.org?subject=Sponsorship%20inquiry">board@nfyll.org</a> — we'll send a one-page summary + the W-9 / 501(c)(3) letter on request.
+      </p>
+    </section>
+
+    <section>
+      <h2>In-kind sponsorship</h2>
+      <p>Not every sponsor writes a check. We also gratefully accept in-kind support — field maintenance, ref fees, equipment for kids who can't afford their own, water and gatorade for the sidelines, photography for our member-club rosters. Reach out at the email above.</p>
+    </section>
+
+    <aside class="legal-card">
+      <h3>Tax-deductible</h3>
+      <p>NFYLL operates as North Florida Lacrosse Inc., a 501(c)(3) public charity. Sponsorships and donations are tax-deductible to the fullest extent allowed by law.</p>
+      <p class="legal-meta">EIN <strong>83-2612765</strong> · Florida DR-14 sales-tax exemption on file · Determination letter available on request.</p>
+    </aside>
   </div>
 </Base>
+
+<style>
+  .page-hero {
+    background: var(--sky-wash);
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem 0 2rem;
+  }
+  .page-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.4rem 0 0.75rem; }
+  .lede { color: var(--ink); font-size: 1rem; max-width: 720px; }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  @media (max-width: 880px) { .tier-grid { grid-template-columns: 1fr; } }
+  .tier-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column;
+  }
+  .tier-card--featured {
+    border-color: var(--sunshine);
+    border-width: 2px;
+    background: var(--white);
+    box-shadow: 0 4px 16px rgba(242, 130, 60, 0.12);
+  }
+  .tier-eyebrow {
+    color: var(--sunshine);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .tier-card h3 { margin: 0.3rem 0 0.5rem; font-size: 1.3rem; color: var(--deep-river); }
+  .tier-amount {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 96;
+    font-size: 1.85rem; font-weight: 700;
+    color: var(--river-blue);
+    margin: 0 0 0.85rem;
+  }
+  .tier-card ul {
+    list-style: none; padding: 0; margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .tier-card ul li {
+    padding: 0.35rem 0 0.35rem 1.1rem;
+    position: relative;
+  }
+  .tier-card ul li::before {
+    content: '✓';
+    color: var(--sunshine);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  .cta-line {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .legal-card {
+    margin: 2.5rem 0 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 4px solid var(--river-blue);
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+  }
+  .legal-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--river-blue); }
+  .legal-card p { margin: 0 0 0.5rem; font-size: 0.95rem; }
+  .legal-card p:last-child { margin: 0; }
+  .legal-meta { color: var(--muted); font-size: 0.85rem !important; }
+</style>

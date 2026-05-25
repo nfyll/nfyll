@@ -2,16 +2,105 @@
 import Base from '../layouts/Base.astro';
 ---
 <Base title="Contact" active="/contact">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">REACH THE BOARD</span>
+      <h1>Contact NFYLL</h1>
+      <p class="lede">Two-person volunteer board. Most questions get a same-week reply. Please direct registration / your-club-specific questions to your member club first — we route those to them anyway.</p>
+    </div>
+  </section>
+
   <div class="container">
-    <h2>Contact</h2>
-    <p>
-      For all league inquiries — registration, board questions, sponsorships,
-      schedule changes — email
-      <a href="mailto:board@nfyll.org">board@nfyll.org</a>.
-    </p>
-    <p>
-      For information about a specific club, contact that club directly from the
-      <a href="/clubs">Member Clubs</a> page.
-    </p>
+    <div class="contact-grid">
+      <div class="contact-card primary">
+        <h3>Email the board</h3>
+        <p>For league operations, sponsorships, scheduling questions, or anything that doesn't belong to a specific member club.</p>
+        <a class="btn btn-primary" href="mailto:board@nfyll.org">board@nfyll.org</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Game-day venue</h3>
+        <p class="address">
+          <strong>Julington Creek Plantation Park</strong><br/>
+          3060 Racetrack Rd<br/>
+          St. Johns, FL 32259
+        </p>
+        <p><a href="https://maps.google.com/?q=3060+Racetrack+Rd+St+Johns+FL+32259" target="_blank" rel="noopener">Open in Google Maps ↗</a></p>
+      </div>
+    </div>
+
+    <div class="map-embed">
+      <iframe
+        title="Map of Julington Creek Plantation Park"
+        src="https://www.google.com/maps?q=3060+Racetrack+Rd+St+Johns+FL+32259&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <section>
+      <h2>Looking for something else?</h2>
+      <ul class="pointers">
+        <li><strong>Want to play?</strong> See the <a href="/clubs">member clubs page</a> and contact the club closest to you.</li>
+        <li><strong>What is NFYLL exactly?</strong> See <a href="/about">About</a> — board, divisions, USA Lacrosse, 501(c)(3) details.</li>
+        <li><strong>When/where is a specific game?</strong> See the <a href="/schedule">schedule</a>.</li>
+        <li><strong>Want to sponsor?</strong> See the <a href="/sponsors">sponsors page</a> for tiers + tax-deductibility info.</li>
+      </ul>
+    </section>
   </div>
 </Base>
+
+<style>
+  .page-hero {
+    background: var(--sky-wash);
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem 0 2rem;
+  }
+  .page-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.4rem 0 0.75rem; }
+  .lede { color: var(--ink); font-size: 1rem; max-width: 720px; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0 1.5rem;
+  }
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+  .contact-card.primary { border-left: 4px solid var(--sunshine); }
+  .contact-card h3 { margin: 0 0 0.5rem; color: var(--deep-river); }
+  .contact-card p { margin: 0 0 0.85rem; font-size: 0.95rem; }
+  .contact-card p:last-child { margin: 0; }
+  .address { font-style: normal; line-height: 1.6; }
+
+  .btn { display: inline-flex; align-items: center; padding: 0.6rem 1.15rem; border-radius: 6px; font-weight: 600; text-decoration: none; transition: background 0.15s, transform 0.15s; }
+  .btn-primary { background: var(--sunshine); color: var(--white); box-shadow: 0 2px 6px rgba(242, 130, 60, 0.25); }
+  .btn-primary:hover { background: #e1701e; color: var(--white); transform: translateY(-1px); }
+
+  .map-embed {
+    margin: 1.5rem 0 2rem;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    box-shadow: var(--shadow-card);
+  }
+  .map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+  .pointers {
+    list-style: none; padding: 0; margin: 1rem 0;
+  }
+  .pointers li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 0.95rem;
+  }
+  .pointers li:last-child { border-bottom: none; }
+  .pointers strong { color: var(--deep-river); }
+</style>

@@ -2,28 +2,246 @@
 import Base from '../layouts/Base.astro';
 ---
 <Base title="About" active="/about">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">ABOUT THE LEAGUE</span>
+      <h1>How NFYLL works</h1>
+      <p class="lede">Eight independent youth clubs across northeast Florida. One Saturday-morning venue. One spring season a year. Boys, grades PK through 8.</p>
+    </div>
+  </section>
+
   <div class="container">
-    <h2>About NFYLL</h2>
-    <p>
-      North Florida Youth Lacrosse League is a 501(c)(3) nonprofit organizing
-      spring rec lacrosse for youth players across northeast Florida.
-    </p>
+    <section class="how-it-works">
+      <div class="how-step">
+        <span class="step-num">1</span>
+        <h3>Clubs run their own programs</h3>
+        <p>Each member club handles its own players — practices, coaches, equipment, registration. Some clubs have a dozen players, some have over a hundred.</p>
+      </div>
+      <div class="how-arrow" aria-hidden="true">→</div>
+      <div class="how-step">
+        <span class="step-num">2</span>
+        <h3>NFYLL coordinates the league</h3>
+        <p>Volunteer board members from across the clubs run scheduling, division alignment, and field operations. Two directors today (Dave Vernon + Sean Packer).</p>
+      </div>
+      <div class="how-arrow" aria-hidden="true">→</div>
+      <div class="how-step">
+        <span class="step-num">3</span>
+        <h3>One field, one morning a week</h3>
+        <p>All games are at Julington Creek Plantation Park, Saturday mornings, February through May. Roughly eight game days plus a season-ending jamboree.</p>
+      </div>
+    </section>
 
-    <h2>Board</h2>
-    <ul>
-      <li><strong>David Vernon</strong> — Director</li>
-      <li><strong>Sean Packer</strong> — Director</li>
-    </ul>
+    <section>
+      <h2>Divisions &amp; formats</h2>
+      <p class="lede">Game formats scale with age. Younger kids play small-sided; older kids play full-field 10v10.</p>
+      <div class="divisions-table">
+        <div class="div-row div-row--head">
+          <span>Division</span><span>Format</span><span>What it means</span>
+        </div>
+        <div class="div-row">
+          <span><strong>1st / 2nd grade</strong></span>
+          <span class="format format-4v4">4v4</span>
+          <span>Small-sided, no goalies, no body or stick checks. The point is touches on the ball.</span>
+        </div>
+        <div class="div-row">
+          <span><strong>3rd / 4th grade</strong></span>
+          <span class="format format-7v7">7v7</span>
+          <span>Half-field play, goalies, light contact. Bridge between learning the sport and full-field rules.</span>
+        </div>
+        <div class="div-row">
+          <span><strong>5th / 6th grade</strong></span>
+          <span class="format format-10v10">10v10</span>
+          <span>Full-sided rules with full equipment. Closest to high-school lacrosse, scaled to the age group.</span>
+        </div>
+        <div class="div-row">
+          <span><strong>7th / 8th grade</strong></span>
+          <span class="format format-10v10">10v10</span>
+          <span>Full-sided. This is where rec-league players bridge into middle-school and travel programs.</span>
+        </div>
+      </div>
+      <p class="note">NFYLL is <strong>boys only</strong>. Girls in our area play in NEFGYLL (Northeast Florida Girls Youth Lacrosse League), a separate league.</p>
+    </section>
 
-    <h2>Mission</h2>
-    <p>
-      Grow the sport of lacrosse in northeast Florida through accessible
-      youth play across our partner clubs.
-    </p>
+    <section>
+      <h2>USA Lacrosse membership</h2>
+      <p>Every player and coach must be a current USA Lacrosse member — it's both league rule and source of secondary insurance coverage during play. Memberships are inexpensive and renew annually:</p>
+      <ul class="usal-tiers">
+        <li><strong>$15/yr</strong> — 6U (Pre-K / K)</li>
+        <li><strong>$35/yr</strong> — ages 7 to 22 (basically all rec-age players)</li>
+        <li><strong>$60/yr</strong> — adults (coaches and officials; bundles Level 1 cert)</li>
+      </ul>
+      <p>Sign up or renew at <a href="https://www.usalacrosse.com" target="_blank" rel="noopener">usalacrosse.com ↗</a>. Many member clubs handle this at registration on your behalf.</p>
+    </section>
 
-    <h2>Contact</h2>
-    <p>
-      <a href="mailto:board@nfyll.org">board@nfyll.org</a>
-    </p>
+    <section>
+      <h2>Board</h2>
+      <div class="board-grid">
+        <div class="board-card">
+          <h3>David Vernon</h3>
+          <p class="board-role">Director</p>
+          <p>Owns site / league operations / scheduling coordination. Fleming Island Lacrosse Club.</p>
+        </div>
+        <div class="board-card">
+          <h3>Sean Packer</h3>
+          <p class="board-role">Director</p>
+          <p>Owns LeagueOps tool / matchmaking / divisional balance.</p>
+        </div>
+      </div>
+      <p>Email <a href="mailto:board@nfyll.org">board@nfyll.org</a> for any league inquiry. Please direct registration / your-team-specific questions to your member club first.</p>
+    </section>
+
+    <aside class="legal-card">
+      <h3>Nonprofit</h3>
+      <p>North Florida Lacrosse Inc. (DBA <strong>North Florida Youth Lacrosse League</strong>) is a 501(c)(3) public charity, effective October 15, 2018. Donations are tax-deductible.</p>
+      <p class="legal-meta">EIN <strong>83-2612765</strong> · Florida DR-14 sales-tax exemption on file.</p>
+    </aside>
   </div>
 </Base>
+
+<style>
+  .page-hero {
+    background: var(--sky-wash);
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem 0 2rem;
+  }
+  .page-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0.4rem 0 0.75rem; }
+  .lede { color: var(--ink); font-size: 1rem; max-width: 720px; }
+
+  .how-it-works {
+    margin: 2.5rem 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  @media (max-width: 880px) {
+    .how-it-works { grid-template-columns: 1fr; }
+    .how-arrow { display: none; }
+  }
+  .how-step {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
+    background: var(--sunshine);
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.65rem;
+  }
+  .how-step h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+  .how-step p { margin: 0; color: var(--ink); font-size: 0.92rem; }
+  .how-arrow { align-self: center; color: var(--sunshine); font-size: 1.5rem; font-weight: 300; }
+
+  .divisions-table {
+    margin: 1.25rem 0;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .div-row {
+    display: grid;
+    grid-template-columns: 160px 90px 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 0.95rem;
+  }
+  .div-row:last-child { border-bottom: none; }
+  .div-row--head {
+    background: var(--sky-wash);
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+  .format {
+    display: inline-block;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  .format-4v4 { background: var(--sand-gold-soft); color: #8a5a00; }
+  .format-7v7 { background: var(--sunshine-soft); color: #b04a13; }
+  .format-10v10 { background: rgba(27, 77, 126, 0.10); color: var(--river-blue); }
+  @media (max-width: 640px) {
+    .div-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .div-row--head { display: none; }
+  }
+  .note {
+    background: var(--sand-gold-soft);
+    border-left: 3px solid var(--sand-gold);
+    padding: 0.85rem 1rem;
+    border-radius: 4px;
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-top: 1rem;
+  }
+
+  .usal-tiers {
+    list-style: none; padding: 0; margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .usal-tiers li {
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .usal-tiers li strong { color: var(--river-blue); font-family: 'Fraunces', serif; font-size: 1.05rem; }
+  @media (max-width: 640px) { .usal-tiers { grid-template-columns: 1fr; } }
+
+  .board-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0 1rem;
+  }
+  @media (max-width: 640px) { .board-grid { grid-template-columns: 1fr; } }
+  .board-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+  }
+  .board-card h3 { margin: 0 0 0.2rem; font-size: 1.1rem; }
+  .board-role {
+    color: var(--sunshine);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 0.5rem;
+  }
+  .board-card p:last-child { margin: 0; font-size: 0.92rem; color: var(--ink); }
+
+  .legal-card {
+    margin: 2.5rem 0 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 4px solid var(--river-blue);
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+  }
+  .legal-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--river-blue); }
+  .legal-card p { margin: 0 0 0.5rem; font-size: 0.95rem; }
+  .legal-card p:last-child { margin: 0; }
+  .legal-meta { color: var(--muted); font-size: 0.85rem !important; }
+</style>
