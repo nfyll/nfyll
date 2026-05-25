@@ -5,7 +5,7 @@
  * not yet sourced — rendered as colored-square monogram badges in the
  * meantime, consistent with the bordered-square frame of real logos.
  */
-import ameliaIsland from '../assets/brand/clubs/amelia-island.png';
+import ameliaIsland from '../assets/brand/clubs/amelia-island.jpg';
 import boldCity from '../assets/brand/clubs/bold-city.png';
 import bulldogsLc from '../assets/brand/clubs/bulldogs-lc.png';
 import creeks from '../assets/brand/clubs/creeks.png';
@@ -28,12 +28,12 @@ type ClubEntry = LogoClub | MonogramClub;
 function isLogoClub(c: ClubEntry): c is LogoClub { return 'logo' in c; }
 
 const clubs: ClubEntry[] = [
-  { name: 'Amelia Island Hammerheads',     town: 'Amelia Island, FL',     logo: ameliaIsland },
+  { name: 'Amelia Island Hammerheads',     town: 'Amelia Island, FL',     logo: ameliaIsland, url: 'https://www.hammerheadlacrosse.com/' },
   { name: 'Bold City Eagles',              town: 'Jacksonville, FL',      logo: boldCity,    url: 'https://www.boldcitylaxevents.com/' },
   { name: 'Bulldogs LC',                   town: 'Jacksonville, FL',      logo: bulldogsLc,  url: 'https://www.bolles.org/middle/athletics/spring-sports/lacrosse' },
   { name: 'Creeks Youth Lacrosse',         town: 'St. Johns, FL',         logo: creeks,   url: 'https://creekslax.com' },
   { name: 'Fleming Island Lacrosse Club',  town: 'Fleming Island, FL',    logo: filc,     url: 'https://filc.us' },
-  { name: 'Jax Lax',                       town: 'Jacksonville, FL',      logo: jaxLax },
+  { name: 'Jax Lax',                       town: 'Jacksonville, FL',      logo: jaxLax,      url: 'https://jaxlax.leagueapps.com/' },
   { name: 'Ponte Vedra Riptide Lacrosse',  town: 'Ponte Vedra, FL',       logo: ponteVedra },
   { name: 'Redhawks',                      town: 'Gainesville, FL',       logo: redhawks,    url: 'https://www.gainesvilleyouthlax.com/' },
 ];
