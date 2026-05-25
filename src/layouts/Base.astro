@@ -44,7 +44,21 @@ const navLinks: Array<{ href: string; label: string }> = [
   <meta name="twitter:image" content={ogImageUrl} />
   <link rel="icon" type="image/png" href="/logo.png" />
   <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="canonical" href={`https://nfyll.org${Astro.url.pathname}`} />
   <title>{fullTitle}</title>
+  <script is:inline>
+    // Hostname canonicalization — northfloridalax.com (or any non-nfyll host)
+    // routes through the same SWA but should redirect users to nfyll.org for
+    // brand consistency + SEO. SWA Free tier can't do hostname-based 301 at
+    // the edge, so we do it client-side here. Bots see the canonical link
+    // tag above. Browsers see the redirect.
+    (function () {
+      var h = window.location.hostname;
+      if (h && h !== 'nfyll.org' && h !== 'localhost' && !h.endsWith('.azurestaticapps.net')) {
+        window.location.replace('https://nfyll.org' + window.location.pathname + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "SportsOrganization",
