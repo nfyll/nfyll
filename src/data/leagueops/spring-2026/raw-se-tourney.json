@@ -1,0 +1,1491 @@
+{
+  "source": "sportsengine_tourney",
+  "tournament_name": "NFYLL 2026 Spring Season",
+  "tournament_date_range": "Feb 21 - Apr 25, 2026",
+  "venue": "Julington Creek Plantation Park, St Johns, FL",
+  "scrapedAt": "2026-05-25T18:02:57.608571",
+  "note": "Public archive \u2014 scores intentionally NOT included (NFYLL is rec league, no public competitive results). Jamboree week (May 2) is in LeagueOps only, not SE Tourney.",
+  "divisions": [
+    {
+      "name": "1/2 Grade 4v4",
+      "gameCount": 28,
+      "games": [
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P1",
+          "short_date": "02/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "Creeks Blue 8u",
+          "team2": "8U Riptide White"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P2",
+          "short_date": "02/28/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "Fleming Island 1/2",
+          "team2": "8U Riptide Black"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P3",
+          "short_date": "02/28/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "Jax Lax - 8U",
+          "team2": "8U Riptide Gray"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P4",
+          "short_date": "02/28/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "Creeks Green 8u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P5",
+          "short_date": "03/07/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide White",
+          "team2": "Fleming Island 1/2"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P6",
+          "short_date": "03/07/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Gray",
+          "team2": "Creeks Green 8u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P7",
+          "short_date": "03/07/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Black",
+          "team2": "Creeks Blue 8u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P8",
+          "short_date": "03/07/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "Jax Lax - 8U"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P9",
+          "short_date": "03/14/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide White",
+          "team2": "8U Riptide Black"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P10",
+          "short_date": "03/14/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "8U Riptide Gray"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P11",
+          "short_date": "03/14/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "Fleming Island 1/2",
+          "team2": "Creeks Green 8u"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P12",
+          "short_date": "03/14/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "Jax Lax - 8U",
+          "team2": "Creeks Blue 8u"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P13",
+          "short_date": "03/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide White",
+          "team2": "Jax Lax - 8U"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P14",
+          "short_date": "03/28/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Gray",
+          "team2": "Fleming Island 1/2"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P15",
+          "short_date": "03/28/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Black",
+          "team2": "Creeks Green 8u"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P16",
+          "short_date": "03/28/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "Creeks Blue 8u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P17",
+          "short_date": "04/11/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide White",
+          "team2": "Creeks Blue 8u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P18",
+          "short_date": "04/11/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "Creeks Green 8u",
+          "team2": "8U Riptide Gray"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P19",
+          "short_date": "04/11/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "Fleming Island 1/2"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P20",
+          "short_date": "04/11/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Black",
+          "team2": "Jax Lax - 8U"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P21",
+          "short_date": "04/18/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "Jax Lax - 8U"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P22",
+          "short_date": "04/18/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Black",
+          "team2": "Fleming Island 1/2"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P23",
+          "short_date": "04/18/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Gray",
+          "team2": "Creeks Green 8u"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P24",
+          "short_date": "04/18/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide White",
+          "team2": "Creeks Blue 8u"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P24",
+          "short_date": "04/25/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Gray",
+          "team2": "Jax Lax - 8U"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P26",
+          "short_date": "04/25/26",
+          "time": "9:45 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide White",
+          "team2": "Fleming Island 1/2"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P27",
+          "short_date": "04/25/26",
+          "time": "10:30 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Blue",
+          "team2": "Creeks Green 8u"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P28",
+          "short_date": "04/25/26",
+          "time": "11:15 AM",
+          "location": "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)",
+          "team1": "8U Riptide Black",
+          "team2": "Creeks Blue 8u"
+        }
+      ],
+      "uniqueTeams": [
+        "8U Riptide Black",
+        "8U Riptide Blue",
+        "8U Riptide Gray",
+        "8U Riptide White",
+        "Creeks Blue 8u",
+        "Creeks Green 8u",
+        "Fleming Island 1/2",
+        "Jax Lax - 8U"
+      ],
+      "uniqueDates": [
+        "Saturday, April 11, 2026",
+        "Saturday, April 18, 2026",
+        "Saturday, April 25, 2026",
+        "Saturday, February 28, 2026",
+        "Saturday, March 07, 2026",
+        "Saturday, March 14, 2026",
+        "Saturday, March 28, 2026"
+      ],
+      "uniqueLocations": [
+        "Julington Creek Plantation Park - Field 4 - Behind Fenced Field (8U)"
+      ]
+    },
+    {
+      "name": "3/4 Grade 7V7",
+      "gameCount": 39,
+      "games": [
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P1",
+          "short_date": "02/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Fleming Island 3/4",
+          "team2": "10U Riptide Blue"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P2",
+          "short_date": "02/28/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U",
+          "team2": "10U Riptide Black"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P3",
+          "short_date": "02/28/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Gray",
+          "team2": "Creeks Blue 10u"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P4",
+          "short_date": "02/28/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Green 10u",
+          "team2": "10U Riptide Navy"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P5",
+          "short_date": "02/28/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide White",
+          "team2": "Creeks Blue 10u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P6",
+          "short_date": "03/07/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Blue",
+          "team2": "Creeks Blue 10u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P7",
+          "short_date": "03/07/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Green 10u",
+          "team2": "10U Riptide Gray"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P8",
+          "short_date": "03/07/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U Titans",
+          "team2": "10U Riptide Navy"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P10",
+          "short_date": "03/07/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U",
+          "team2": "10U Riptide White"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P11",
+          "short_date": "03/07/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Fleming Island 3/4",
+          "team2": "10U Riptide Black"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P12",
+          "short_date": "03/14/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Black",
+          "team2": "10U Riptide Blue"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P13",
+          "short_date": "03/14/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Gray",
+          "team2": "10U Riptide Navy"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P14",
+          "short_date": "03/14/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U",
+          "team2": "Creeks Green 10u"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P15",
+          "short_date": "03/14/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U Titans",
+          "team2": "Fleming Island 3/4"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P16",
+          "short_date": "03/14/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Blue 10u",
+          "team2": "Jax Lax - 10U"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P17",
+          "short_date": "03/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Fleming Island 3/4",
+          "team2": "10U Riptide Gray"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P18",
+          "short_date": "03/28/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U",
+          "team2": "10U Riptide Blue"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P19",
+          "short_date": "03/28/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Hammerhead",
+          "team2": "10U Riptide White"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P20",
+          "short_date": "03/28/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Jax Lax - 10U Titans",
+          "team2": "10U Riptide Navy"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P21",
+          "short_date": "03/28/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Blue 10u",
+          "team2": "10U Riptide Black"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P22",
+          "short_date": "03/28/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Hammerhead",
+          "team2": "Creeks Green 10u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P23",
+          "short_date": "04/11/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Black",
+          "team2": "10U Riptide Gray"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P24",
+          "short_date": "04/11/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Blue",
+          "team2": "Creeks Green 10u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P25",
+          "short_date": "04/11/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Navy",
+          "team2": "Fleming Island 3/4"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P27",
+          "short_date": "04/11/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Blue 10u",
+          "team2": "Jax Lax - 10U"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P26",
+          "short_date": "04/11/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide White",
+          "team2": "Jax Lax - 10U Titans"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P28",
+          "short_date": "04/11/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Fleming Island 3/4",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P29",
+          "short_date": "04/18/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Black",
+          "team2": "Jax Lax - 10U Titans"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P30",
+          "short_date": "04/18/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Blue",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P31",
+          "short_date": "04/18/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Navy",
+          "team2": "Jax Lax - 10U"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P32",
+          "short_date": "04/18/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Blue 10u",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P33",
+          "short_date": "04/18/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Gray",
+          "team2": "Creeks Green 10u"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P34",
+          "short_date": "04/18/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide White",
+          "team2": "Fleming Island 3/4"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P35",
+          "short_date": "04/25/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Gray",
+          "team2": "Jax Lax - 10U"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P36",
+          "short_date": "04/25/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Navy",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P37",
+          "short_date": "04/25/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Blue",
+          "team2": "Jax Lax - 10U Titans"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P38",
+          "short_date": "04/25/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide Black",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P39",
+          "short_date": "04/25/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "10U Riptide White",
+          "team2": "Creeks Green 10u"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P40",
+          "short_date": "04/25/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U",
+          "team1": "Creeks Blue 10u",
+          "team2": "Fleming Island 3/4"
+        }
+      ],
+      "uniqueTeams": [
+        "10U Riptide Black",
+        "10U Riptide Blue",
+        "10U Riptide Gray",
+        "10U Riptide Navy",
+        "10U Riptide White",
+        "Creeks Blue 10u",
+        "Creeks Green 10u",
+        "Fleming Island 3/4",
+        "Hammerhead",
+        "Jax Lax - 10U",
+        "Jax Lax - 10U Titans"
+      ],
+      "uniqueDates": [
+        "Saturday, April 11, 2026",
+        "Saturday, April 18, 2026",
+        "Saturday, April 25, 2026",
+        "Saturday, February 28, 2026",
+        "Saturday, March 07, 2026",
+        "Saturday, March 14, 2026",
+        "Saturday, March 28, 2026"
+      ],
+      "uniqueLocations": [
+        "Julington Creek Plantation Park - Field 2 - Behind Concessions 7v7 10U"
+      ]
+    },
+    {
+      "name": "5/6 Grade 10v10",
+      "gameCount": 43,
+      "games": [
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P2",
+          "short_date": "02/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Navy",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P1",
+          "short_date": "02/28/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Black",
+          "team2": "Bold City Eagles 12U"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P3",
+          "short_date": "02/28/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Blue 12u",
+          "team2": "RedHawks 12U"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P4",
+          "short_date": "02/28/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Jax Lax - 12U",
+          "team2": "12U Riptide White"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P5",
+          "short_date": "02/28/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Green 12u",
+          "team2": "12U Riptide Blue"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P6",
+          "short_date": "02/28/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Gray",
+          "team2": "RedHawks 12U"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P7",
+          "short_date": "03/07/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Green 12u",
+          "team2": "12U Riptide Black"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P8",
+          "short_date": "03/07/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P9",
+          "short_date": "03/07/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "RedHawks 12U",
+          "team2": "Creeks Green 12u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P10",
+          "short_date": "03/07/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "12U Riptide White"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P11",
+          "short_date": "03/07/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "RedHawks 12U",
+          "team2": "12U Riptide Blue"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P12",
+          "short_date": "03/07/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Jax Lax - 12U",
+          "team2": "12U Riptide Navy"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P13",
+          "short_date": "03/07/26",
+          "time": "3:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Blue 12u",
+          "team2": "12U Riptide Gray"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P14",
+          "short_date": "03/14/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Black",
+          "team2": "12U Riptide Blue"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P15",
+          "short_date": "03/14/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Gray",
+          "team2": "12U Riptide Navy"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P16",
+          "short_date": "03/14/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Blue 12u",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P17",
+          "short_date": "03/14/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Jax Lax - 12U",
+          "team2": "Creeks Green 12u"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P18",
+          "short_date": "03/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Fleming Island 5/6",
+          "team2": "12U Riptide Gray"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P19",
+          "short_date": "03/28/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "12U Riptide Navy"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P21",
+          "short_date": "03/28/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Jax Lax - 12U",
+          "team2": "12U Riptide White"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P22",
+          "short_date": "03/28/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "12U Riptide Black"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P23",
+          "short_date": "03/28/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Green 12u",
+          "team2": "Bold City Eagles 12U"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P24",
+          "short_date": "03/28/26",
+          "time": "3:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Blue 12u",
+          "team2": "12U Riptide Blue"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P25",
+          "short_date": "04/11/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Black",
+          "team2": "Jax Lax - 12U"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P26",
+          "short_date": "04/11/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Blue",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P28",
+          "short_date": "04/11/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Gray",
+          "team2": "Creeks Green 12u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P29",
+          "short_date": "04/11/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P27",
+          "short_date": "04/11/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Bold City Eagles 12U",
+          "team2": "Creeks Blue 12u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P30",
+          "short_date": "04/11/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Navy",
+          "team2": "12U Riptide White"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P31",
+          "short_date": "04/11/26",
+          "time": "3:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Bold City Eagles 12U"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P44",
+          "short_date": "04/18/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Blue",
+          "team2": "Jax Lax - 12U"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P32",
+          "short_date": "04/18/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Gray",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P33",
+          "short_date": "04/18/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "RedHawks 12U",
+          "team2": "12U Riptide Black"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P34",
+          "short_date": "04/18/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Bold City Eagles 12U",
+          "team2": "Creeks Green 12u"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P35",
+          "short_date": "04/18/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Fleming Island 5/6",
+          "team2": "Creeks Blue 12u"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P36",
+          "short_date": "04/18/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "RedHawks 12U",
+          "team2": "12U Riptide Navy"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P37",
+          "short_date": "04/18/26",
+          "time": "3:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Bold City Eagles 12U",
+          "team2": "12U Riptide White"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P38",
+          "short_date": "04/25/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Black",
+          "team2": "Fleming Island 5/6"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P39",
+          "short_date": "04/25/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Creeks Blue 12u",
+          "team2": "12U Riptide Navy"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P40",
+          "short_date": "04/25/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Gray",
+          "team2": "Bold City Eagles 12U"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P41",
+          "short_date": "04/25/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Jax Lax - 12U"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P42",
+          "short_date": "04/25/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "12U Riptide Blue",
+          "team2": "12U Riptide White"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P43",
+          "short_date": "04/25/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Creeks Green 12u"
+        }
+      ],
+      "uniqueTeams": [
+        "12U Riptide Black",
+        "12U Riptide Blue",
+        "12U Riptide Gray",
+        "12U Riptide Navy",
+        "12U Riptide White",
+        "Bold City Eagles 12U",
+        "Creeks Blue 12u",
+        "Creeks Green 12u",
+        "Fleming Island 5/6",
+        "Hammerhead",
+        "Jax Lax - 12U",
+        "RedHawks 12U"
+      ],
+      "uniqueDates": [
+        "Saturday, April 11, 2026",
+        "Saturday, April 18, 2026",
+        "Saturday, April 25, 2026",
+        "Saturday, February 28, 2026",
+        "Saturday, March 07, 2026",
+        "Saturday, March 14, 2026",
+        "Saturday, March 28, 2026"
+      ],
+      "uniqueLocations": [
+        "Julington Creek Plantation Park - Field 1 - Turf (Furthest from Racetrack Rd)"
+      ]
+    },
+    {
+      "name": "7/8 Grade 10V10",
+      "gameCount": 41,
+      "games": [
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P1",
+          "short_date": "02/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Black",
+          "team2": "Bold City Eagles 14U"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P2",
+          "short_date": "02/28/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Bulldogs LC",
+          "team2": "14U Riptide White"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P3",
+          "short_date": "02/28/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Blue",
+          "team2": "Creeks Blue 14u"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P4",
+          "short_date": "02/28/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "RedHawks 14U",
+          "team2": "14U Riptide White"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P5",
+          "short_date": "02/28/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Creeks Green 14u",
+          "team2": "Fleming Island 7/8"
+        },
+        {
+          "date": "Saturday, February 28, 2026",
+          "game_id": "P6",
+          "short_date": "02/28/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Jax Lax - 14U",
+          "team2": "RedHawks 14U"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P7",
+          "short_date": "03/07/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Jax Lax - 14U",
+          "team2": "Fleming Island 7/8"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P8",
+          "short_date": "03/07/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Black",
+          "team2": "14U Riptide Blue"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P9",
+          "short_date": "03/07/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Creeks Green 14u"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P10",
+          "short_date": "03/07/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "RedHawks 14U",
+          "team2": "Bulldogs LC"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P11",
+          "short_date": "03/07/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Creeks Blue 14u",
+          "team2": "14U Riptide White"
+        },
+        {
+          "date": "Saturday, March 07, 2026",
+          "game_id": "P12",
+          "short_date": "03/07/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "RedHawks 14U",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P13",
+          "short_date": "03/14/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Black",
+          "team2": "14U Riptide Blue"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P14",
+          "short_date": "03/14/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Creeks Blue 14u",
+          "team2": "Jax Lax - 14U"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P15",
+          "short_date": "03/14/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Creeks Green 14u",
+          "team2": "Bulldogs LC"
+        },
+        {
+          "date": "Saturday, March 14, 2026",
+          "game_id": "P16",
+          "short_date": "03/14/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Fleming Island 7/8",
+          "team2": "Creeks Blue 14u"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P17",
+          "short_date": "03/28/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Jax Lax - 14U",
+          "team2": "14U Riptide White"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P18",
+          "short_date": "03/28/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Bold City Eagles 14U",
+          "team2": "Creeks Blue 14u"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P19",
+          "short_date": "03/28/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "RedHawks 14U",
+          "team2": "Bulldogs LC"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P20",
+          "short_date": "03/28/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "14U Riptide Black"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P21",
+          "short_date": "03/28/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Bold City Eagles 14U",
+          "team2": "Creeks Green 14u"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P22",
+          "short_date": "03/28/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "RedHawks 14U",
+          "team2": "Fleming Island 7/8"
+        },
+        {
+          "date": "Saturday, March 28, 2026",
+          "game_id": "P23",
+          "short_date": "03/28/26",
+          "time": "3:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "14U Riptide Blue"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P24",
+          "short_date": "04/11/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide White",
+          "team2": "Creeks Green 14u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P25",
+          "short_date": "04/11/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Blue",
+          "team2": "Creeks Blue 14u"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P26",
+          "short_date": "04/11/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Fleming Island 7/8"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P27",
+          "short_date": "04/11/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Jax Lax - 14U",
+          "team2": "14U Riptide Black"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P28",
+          "short_date": "04/11/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Bulldogs LC"
+        },
+        {
+          "date": "Saturday, April 11, 2026",
+          "game_id": "P29",
+          "short_date": "04/11/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Bold City Eagles 14U",
+          "team2": "Fleming Island 7/8"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P30",
+          "short_date": "04/18/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Blue",
+          "team2": "Creeks Green 14u"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P36",
+          "short_date": "04/18/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Bulldogs LC",
+          "team2": "Creeks Blue 14u"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P31",
+          "short_date": "04/18/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Bold City Eagles 14U",
+          "team2": "RedHawks 14U"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P32",
+          "short_date": "04/18/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "14U Riptide White"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P33",
+          "short_date": "04/18/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Jax Lax - 14U",
+          "team2": "Fleming Island 7/8"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P34",
+          "short_date": "04/18/26",
+          "time": "2:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "RedHawks 14U",
+          "team2": "14U Riptide Black"
+        },
+        {
+          "date": "Saturday, April 18, 2026",
+          "game_id": "P35",
+          "short_date": "04/18/26",
+          "time": "3:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Jax Lax - 14U",
+          "team2": "Hammerhead"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P37",
+          "short_date": "04/25/26",
+          "time": "9:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "14U Riptide Blue",
+          "team2": "Jax Lax - 14U"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P38",
+          "short_date": "04/25/26",
+          "time": "10:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Bold City Eagles 14U"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P39",
+          "short_date": "04/25/26",
+          "time": "11:00 AM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Fleming Island 7/8",
+          "team2": "14U Riptide White"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P40",
+          "short_date": "04/25/26",
+          "time": "12:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Hammerhead",
+          "team2": "Creeks Blue 14u"
+        },
+        {
+          "date": "Saturday, April 25, 2026",
+          "game_id": "P41",
+          "short_date": "04/25/26",
+          "time": "1:00 PM",
+          "location": "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)",
+          "team1": "Creeks Green 14u",
+          "team2": "14U Riptide Black"
+        }
+      ],
+      "uniqueTeams": [
+        "14U Riptide Black",
+        "14U Riptide Blue",
+        "14U Riptide White",
+        "Bold City Eagles 14U",
+        "Bulldogs LC",
+        "Creeks Blue 14u",
+        "Creeks Green 14u",
+        "Fleming Island 7/8",
+        "Hammerhead",
+        "Jax Lax - 14U",
+        "RedHawks 14U"
+      ],
+      "uniqueDates": [
+        "Saturday, April 11, 2026",
+        "Saturday, April 18, 2026",
+        "Saturday, April 25, 2026",
+        "Saturday, February 28, 2026",
+        "Saturday, March 07, 2026",
+        "Saturday, March 14, 2026",
+        "Saturday, March 28, 2026"
+      ],
+      "uniqueLocations": [
+        "Julington Creek Plantation Park - Field 6 - Turf (Closest to Racetrack Rd)"
+      ]
+    }
+  ]
+}

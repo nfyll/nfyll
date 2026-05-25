@@ -12,60 +12,84 @@ const active = await getActiveSeasons();
 const inSeason = active.length > 0;
 const upcoming = inSeason ? null : await getUpcomingSeason();
 const lastSeason = inSeason ? null : await getMostRecentCompletedSeason();
-const games = inSeason ? await getSeasonSchedule(active[0].slug) : [];
-const lastSeasonGames = !inSeason && lastSeason
-  ? (await getSeasonSchedule(lastSeason.slug)).slice(-6)
-  : [];
+const games = inSeason
+  ? await getSeasonSchedule(active[0].slug)
+  : lastSeason
+    ? await getSeasonSchedule(lastSeason.slug)
+    : [];
+
+// Group games by date for display
+type Group = { date: string; sortKey: number; games: typeof games };
+const groups = new Map<string, Group>();
+for (const g of games) {
+  const d = new Date(g.startsAt);
+  const dateKey = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' });
+  const sortKey = d.getTime();
+  if (!groups.has(dateKey)) groups.set(dateKey, { date: dateKey, sortKey, games: [] });
+  groups.get(dateKey)!.games.push(g);
+}
+const orderedGroups = [...groups.values()].sort((a, b) => a.sortKey - b.sortKey);
+// Sort each day's games by start time
+for (const g of orderedGroups) {
+  g.games.sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
+}
+
+const showingArchive = !inSeason && lastSeason && games.length > 0;
 ---
 <Base title="Schedule" active="/schedule">
   <div class="container">
     <h2>Schedule</h2>
     {inSeason ? (
-      <>
-        <p>Showing all games in <strong>{active[0].name}</strong>.</p>
-        {games.length > 0 ? (
-          <div class="schedule-list">
-            {games.map((g) => <ScheduleCard game={g} />)}
-          </div>
-        ) : (
-          <p class="empty-state">Schedule not yet published for this season.</p>
-        )}
-      </>
+      <p>Showing all games in <strong>{active[0].name}</strong>.</p>
+    ) : showingArchive ? (
+      <p class="archive-note">
+        <strong>Archive — {lastSeason.name}</strong> · {games.length} games across {orderedGroups.length} game days
+        <br />
+        <span class="archive-sub">Next season opens January 2027 · this is the historical record of last spring's play</span>
+      </p>
     ) : upcoming ? (
       <div class="empty-state">
         <strong>{upcoming.name}</strong> opens {new Date(upcoming.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.
-        Schedule will appear here when the season starts.
-        {upcoming.registrationUrl && (
-          <p style="margin-top: 0.75rem;"><a href={upcoming.registrationUrl}>Register →</a></p>
-        )}
       </div>
-    ) : lastSeason ? (
-      <>
-        <div class="empty-state">
-          <strong>Next season info coming soon.</strong>
-          <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-            Last completed: <strong>{lastSeason.name}</strong>
-          </div>
-        </div>
-        {lastSeasonGames.length > 0 && (
-          <>
-            <h2>Final games of {lastSeason.name}</h2>
-            <div class="schedule-list">
-              {lastSeasonGames.map((g) => <ScheduleCard game={g} />)}
-            </div>
-          </>
-        )}
-      </>
     ) : (
-      <p class="empty-state">No season data available yet. Schedule will appear here once the season starts.</p>
+      <p class="empty-state">No schedule data yet.</p>
     )}
+
+    {orderedGroups.map((group) => (
+      <section class="day">
+        <h3>{group.date}</h3>
+        <div class="schedule-list">
+          {group.games.map((g) => <ScheduleCard game={g} />)}
+        </div>
+      </section>
+    ))}
   </div>
 </Base>
 <style>
+  .archive-note {
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--brand-accent);
+    border-radius: 4px;
+    margin: 1rem 0 2rem;
+  }
+  .archive-sub {
+    font-size: 0.85rem;
+    color: var(--muted-light);
+  }
+  .day {
+    margin: 2rem 0;
+  }
+  .day h3 {
+    margin: 1.5rem 0 0.75rem;
+    font-size: 1.15rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: var(--brand-accent-light);
+  }
   .schedule-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 0.75rem;
-    margin: 1rem 0;
   }
 </style>

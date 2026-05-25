@@ -35,7 +35,7 @@ const nextGames = inSeason
         ) : (
           <p class="empty-state">No games scheduled for the next few days. <a href="/schedule">See full schedule →</a></p>
         )}
-        <p><a href="/schedule">Full schedule →</a> · <a href="/standings">Standings →</a></p>
+        <p><a href="/schedule">Full schedule →</a></p>
       </>
     ) : upcoming ? (
       <div class="empty-state">
@@ -49,11 +49,11 @@ const nextGames = inSeason
       </div>
     ) : (
       <div class="empty-state">
-        Next season info coming soon.
+        <strong>Next season opens January 2027.</strong>
         {lastSeason && (
-          <div style="margin-top: 0.75rem; font-size: 0.85rem;">
-            Last completed: <strong>{lastSeason.name}</strong>
-            <> · <a href={`/standings?season=${lastSeason.slug}`}>Final standings →</a></>
+          <div style="margin-top: 0.75rem; font-size: 0.9rem;">
+            Last completed: <strong>{lastSeason.name}</strong> ·
+            <> <a href="/schedule">Browse the archive →</a></>
           </div>
         )}
       </div>

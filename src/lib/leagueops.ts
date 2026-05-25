@@ -1,23 +1,30 @@
 /**
- * LeagueOps client — stub.
+ * LeagueOps client.
  *
- * Targets the contract proposed in
- * /Volumes/Crucial X10/tmp/nfyll-leagueops-contract-proposal.md.
- * When Sean publishes @nfyll/leagueops-types and the /api/v1/ endpoints
- * exist on https://leagueops.vercel.app (or wherever the prod host lands),
- * replace the inline types with `import type { ... } from '@nfyll/leagueops-types'`
- * and point LEAGUEOPS_BASE at the live host.
+ * 🎯 NFYLL is a non-competitive REC LEAGUE. Public consumer API does NOT
+ * include scores, standings, or W/L records. Internal matchmaking data
+ * stays in LeagueOps. See `@nfyll/leagueops-types` repo for the contract.
  *
- * Until then every function returns the off-season empty state. That's
- * the correct UX ~7 months a year (NFYLL = single-season Spring Rec).
+ * v1 (current): reads from a BUNDLED ARCHIVE of Spring 2026 schedule data
+ * scraped from SE Tourney (regular season) + LeagueOps (May 2 jamboree).
+ * Site renders Spring 2026 as the most-recent-completed season — off-season
+ * state is the default until the next NFYLL season starts.
+ *
+ * v1.1 (future): when Sean ships the LeagueOps public consumer API, replace
+ * the bundled-archive reads with HTTP fetches against /api/v1/public/*.
+ * The Season/Program/Game types stay the same; only the data source flips.
  */
 
-const LEAGUEOPS_BASE =
-  import.meta.env.LEAGUEOPS_BASE ?? 'https://leagueops.vercel.app';
-const LEAGUEOPS_ENABLED =
-  (import.meta.env.LEAGUEOPS_ENABLED ?? 'false') === 'true';
+import {
+  season as spring2026Season,
+  programs as canonicalPrograms,
+  games as spring2026Games,
+} from '../data/leagueops/spring-2026/canonical';
 
-// ---------- Inline types — replace with @nfyll/leagueops-types when published ----------
+// ---------- Types ----------
+//
+// Public-safe shapes (no score, no standings). Will be re-exported from
+// `@nfyll/leagueops-types` once that package is published.
 
 export type SeasonStatus = 'upcoming' | 'active' | 'completed';
 
@@ -45,81 +52,43 @@ export interface Game {
   divisionId: string;
   homeTeamId: string;
   awayTeamId: string;
+  /** ISO 8601 with offset, e.g. "2026-02-28T09:00:00-05:00". */
   startsAt: string;
   endsAt?: string;
   venue: { name: string; address?: string };
   status: 'scheduled' | 'in-progress' | 'final' | 'postponed' | 'cancelled';
-  score?: { home: number; away: number };
   externalUrl?: string;
-}
-
-export interface StandingRow {
-  teamId: string;
-  rank: number;
-  wins: number;
-  losses: number;
-  ties: number;
-  goalsFor: number;
-  goalsAgainst: number;
-  points: number;
-}
-
-// ---------- Fetch helpers ----------
-
-async function get<T>(path: string, fallback: T): Promise<T> {
-  if (!LEAGUEOPS_ENABLED) return fallback;
-  try {
-    const res = await fetch(`${LEAGUEOPS_BASE}${path}`, {
-      headers: { Accept: 'application/json' },
-    });
-    if (!res.ok) return fallback;
-    return (await res.json()) as T;
-  } catch {
-    return fallback;
-  }
 }
 
 // ---------- Public API ----------
 
 export async function getSeasons(): Promise<Season[]> {
-  return get<Season[]>('/api/v1/seasons', []);
+  return [spring2026Season];
 }
 
 export async function getActiveSeasons(): Promise<Season[]> {
-  const all = await getSeasons();
-  return all.filter((s) => s.status === 'active');
+  return (await getSeasons()).filter((s) => s.status === 'active');
 }
 
 export async function getMostRecentCompletedSeason(): Promise<Season | null> {
-  const all = await getSeasons();
-  const done = all
+  const done = (await getSeasons())
     .filter((s) => s.status === 'completed')
     .sort((a, b) => b.endDate.localeCompare(a.endDate));
   return done[0] ?? null;
 }
 
 export async function getUpcomingSeason(): Promise<Season | null> {
-  const all = await getSeasons();
-  const upcoming = all
+  const upcoming = (await getSeasons())
     .filter((s) => s.status === 'upcoming')
     .sort((a, b) => a.startDate.localeCompare(b.startDate));
   return upcoming[0] ?? null;
 }
 
 export async function getSeasonSchedule(slug: string): Promise<Game[]> {
-  return get<Game[]>(`/api/v1/seasons/${encodeURIComponent(slug)}/schedule`, []);
-}
-
-export async function getSeasonStandings(
-  slug: string,
-  divisionId: string,
-): Promise<StandingRow[]> {
-  return get<StandingRow[]>(
-    `/api/v1/seasons/${encodeURIComponent(slug)}/divisions/${encodeURIComponent(divisionId)}/standings`,
-    [],
-  );
+  if (slug !== spring2026Season.slug) return [];
+  return spring2026Games;
 }
 
 export async function getPrograms(): Promise<Program[]> {
-  return get<Program[]>('/api/v1/programs', []);
+  return canonicalPrograms;
 }

@@ -23,9 +23,7 @@ const timeStr = start.toLocaleTimeString('en-US', {
     <span class="team">{game.homeTeamId}</span>
   </div>
   <div class="venue">{game.venue.name}</div>
-  {game.status === 'final' && game.score && (
-    <div class="score">{game.score.away} – {game.score.home} <em>FINAL</em></div>
-  )}
+  <div class="division">{game.divisionId}{game.status === 'postponed' ? ' · Postponed' : game.status === 'cancelled' ? ' · Cancelled' : ''}</div>
 </a>
 <style>
   .schedule-card {
@@ -43,6 +41,5 @@ const timeStr = start.toLocaleTimeString('en-US', {
   .matchup { margin-top: 0.4rem; font-size: 1.05rem; font-weight: 600; display: flex; gap: 0.5rem; align-items: center; }
   .matchup .at { color: var(--muted-light); font-weight: 400; }
   .venue { margin-top: 0.25rem; font-size: 0.85rem; color: var(--muted-light); }
-  .score { margin-top: 0.5rem; font-size: 0.95rem; color: var(--brand-accent-light); }
-  .score em { font-style: normal; color: var(--muted-light); margin-left: 0.5rem; font-size: 0.8rem; }
+  .division { margin-top: 0.25rem; font-size: 0.75rem; color: var(--muted-light); text-transform: uppercase; letter-spacing: 0.05em; }
 </style>

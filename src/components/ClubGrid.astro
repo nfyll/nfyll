@@ -1,9 +1,8 @@
 ---
 /**
- * Hard-coded member-club list. The canonical roster will eventually
- * come from LeagueOps via getPrograms() — when that endpoint is live,
- * swap this for a dynamic render. For now this is the 2026-05-24
- * roster Dave confirmed.
+ * Hard-coded member-club list. Roster confirmed by Dave 2026-05-25 — 8 clubs.
+ * Logos for the 3 newer clubs (Bold City Eagles, Redhawks, Bulldogs LC)
+ * haven't been sourced yet; render as initials in a colored bubble for now.
  */
 import ameliaIsland from '../assets/brand/clubs/amelia-island.png';
 import creeks from '../assets/brand/clubs/creeks.png';
@@ -11,38 +10,30 @@ import filc from '../assets/brand/clubs/filc.png';
 import jaxLax from '../assets/brand/clubs/jax-lax.png';
 import ponteVedra from '../assets/brand/clubs/ponte-vedra.png';
 
-const clubs = [
-  {
-    name: 'Amelia Island Hammerheads',
-    logo: ameliaIsland,
-    url: '#',
-  },
-  {
-    name: 'Creeks Youth Lacrosse',
-    logo: creeks,
-    url: 'https://creekslax.com',
-  },
-  {
-    name: 'Fleming Island Lacrosse Club',
-    logo: filc,
-    url: 'https://filc.us',
-  },
-  {
-    name: 'Jax Lax',
-    logo: jaxLax,
-    url: '#',
-  },
-  {
-    name: 'Ponte Vedra Riptide Lacrosse',
-    logo: ponteVedra,
-    url: '#',
-  },
+type LogoClub = { name: string; logo: { src: string; width: number; height: number }; url: string };
+type InitialsClub = { name: string; initials: string; url: string };
+type ClubEntry = LogoClub | InitialsClub;
+function isLogoClub(c: ClubEntry): c is LogoClub { return 'logo' in c; }
+
+const clubs: ClubEntry[] = [
+  { name: 'Amelia Island Hammerheads',     logo: ameliaIsland, url: '#' },
+  { name: 'Bold City Eagles',              initials: 'BC',     url: '#' },
+  { name: 'Bulldogs LC',                   initials: 'BLC',    url: '#' },
+  { name: 'Creeks Youth Lacrosse',         logo: creeks,       url: 'https://creekslax.com' },
+  { name: 'Fleming Island Lacrosse Club',  logo: filc,         url: 'https://filc.us' },
+  { name: 'Jax Lax',                       logo: jaxLax,       url: '#' },
+  { name: 'Ponte Vedra Riptide Lacrosse',  logo: ponteVedra,   url: '#' },
+  { name: 'Redhawks',                      initials: 'RH',     url: '#' },
 ];
 ---
 <div class="club-grid">
   {clubs.map((c) => (
     <a class="club-card" href={c.url} target={c.url === '#' ? undefined : '_blank'} rel="noopener">
-      <img src={c.logo.src} width={c.logo.width} height={c.logo.height} alt={`${c.name} logo`} loading="lazy" />
+      {isLogoClub(c) ? (
+        <img src={c.logo.src} width={c.logo.width} height={c.logo.height} alt={`${c.name} logo`} loading="lazy" />
+      ) : (
+        <div class="initials-badge"><span>{c.initials}</span></div>
+      )}
       <span>{c.name}</span>
     </a>
   ))}
@@ -67,8 +58,13 @@ const clubs = [
     background: rgba(255,255,255,0.08);
     border-color: rgba(255,255,255,0.18);
   }
-  .club-card img {
-    width: 80px; height: 80px; object-fit: contain;
+  .club-card img { width: 80px; height: 80px; object-fit: contain; }
+  .initials-badge {
+    width: 80px; height: 80px;
+    background: var(--brand-accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.4rem;
   }
   .club-card span { font-size: 0.9rem; font-weight: 500; }
 </style>
