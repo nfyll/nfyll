@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import ClubGrid from '../components/ClubGrid.astro';
+import ScheduleCard from '../components/ScheduleCard.astro';
+import {
+  getActiveSeasons,
+  getMostRecentCompletedSeason,
+  getUpcomingSeason,
+  getSeasonSchedule,
+} from '../lib/leagueops';
+
+const active = await getActiveSeasons();
+const inSeason = active.length > 0;
+const upcoming = inSeason ? null : await getUpcomingSeason();
+const lastSeason = inSeason ? null : await getMostRecentCompletedSeason();
+const nextGames = inSeason
+  ? (await getSeasonSchedule(active[0].slug))
+      .filter((g) => new Date(g.startsAt) > new Date())
+      .slice(0, 4)
+  : [];
+---
+<Base title="Home" active="/">
+  <section class="hero">
+    <h1>North Florida Youth Lacrosse League</h1>
+    <p>Spring rec lacrosse for youth players across northeast Florida.</p>
+  </section>
+  <div class="container">
+    {inSeason ? (
+      <>
+        <h2>Upcoming games</h2>
+        {nextGames.length > 0 ? (
+          <div class="schedule-list">
+            {nextGames.map((g) => <ScheduleCard game={g} />)}
+          </div>
+        ) : (
+          <p class="empty-state">No games scheduled for the next few days. <a href="/schedule">See full schedule →</a></p>
+        )}
+        <p><a href="/schedule">Full schedule →</a> · <a href="/standings">Standings →</a></p>
+      </>
+    ) : upcoming ? (
+      <div class="empty-state">
+        <strong>{upcoming.name}</strong> opens {new Date(upcoming.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.
+        {upcoming.registrationOpensAt && (
+          <> Registration opens {new Date(upcoming.registrationOpensAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}.</>
+        )}
+        {upcoming.registrationUrl && (
+          <> <a href={upcoming.registrationUrl}>Register →</a></>
+        )}
+      </div>
+    ) : (
+      <div class="empty-state">
+        Next season info coming soon.
+        {lastSeason && (
+          <div style="margin-top: 0.75rem; font-size: 0.85rem;">
+            Last completed: <strong>{lastSeason.name}</strong>
+            <> · <a href={`/standings?season=${lastSeason.slug}`}>Final standings →</a></>
+          </div>
+        )}
+      </div>
+    )}
+
+    <h2>Member clubs</h2>
+    <ClubGrid />
+  </div>
+</Base>
+<style>
+  .schedule-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import type { Game } from '../lib/leagueops';
+export interface Props { game: Game }
+const { game } = Astro.props;
+const start = new Date(game.startsAt);
+const dateStr = start.toLocaleDateString('en-US', {
+  weekday: 'short', month: 'short', day: 'numeric',
+  timeZone: 'America/New_York',
+});
+const timeStr = start.toLocaleTimeString('en-US', {
+  hour: 'numeric', minute: '2-digit',
+  timeZone: 'America/New_York',
+});
+---
+<a class="schedule-card" href={game.externalUrl ?? '#'}>
+  <div class="when">
+    <strong>{dateStr}</strong>
+    <span>{timeStr}</span>
+  </div>
+  <div class="matchup">
+    <span class="team">{game.awayTeamId}</span>
+    <span class="at">@</span>
+    <span class="team">{game.homeTeamId}</span>
+  </div>
+  <div class="venue">{game.venue.name}</div>
+  {game.status === 'final' && game.score && (
+    <div class="score">{game.score.away} – {game.score.home} <em>FINAL</em></div>
+  )}
+</a>
+<style>
+  .schedule-card {
+    display: block;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    color: white; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .schedule-card:hover { background: rgba(255,255,255,0.08); }
+  .when { display: flex; gap: 0.75rem; align-items: baseline; color: var(--muted-light); font-size: 0.9rem; }
+  .when strong { color: white; font-size: 1rem; }
+  .matchup { margin-top: 0.4rem; font-size: 1.05rem; font-weight: 600; display: flex; gap: 0.5rem; align-items: center; }
+  .matchup .at { color: var(--muted-light); font-weight: 400; }
+  .venue { margin-top: 0.25rem; font-size: 0.85rem; color: var(--muted-light); }
+  .score { margin-top: 0.5rem; font-size: 0.95rem; color: var(--brand-accent-light); }
+  .score em { font-style: normal; color: var(--muted-light); margin-left: 0.5rem; font-size: 0.8rem; }
+</style>

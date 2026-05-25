@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import ScheduleCard from '../components/ScheduleCard.astro';
+import {
+  getActiveSeasons,
+  getMostRecentCompletedSeason,
+  getUpcomingSeason,
+  getSeasonSchedule,
+} from '../lib/leagueops';
+
+const active = await getActiveSeasons();
+const inSeason = active.length > 0;
+const upcoming = inSeason ? null : await getUpcomingSeason();
+const lastSeason = inSeason ? null : await getMostRecentCompletedSeason();
+const games = inSeason ? await getSeasonSchedule(active[0].slug) : [];
+const lastSeasonGames = !inSeason && lastSeason
+  ? (await getSeasonSchedule(lastSeason.slug)).slice(-6)
+  : [];
+---
+<Base title="Schedule" active="/schedule">
+  <div class="container">
+    <h2>Schedule</h2>
+    {inSeason ? (
+      <>
+        <p>Showing all games in <strong>{active[0].name}</strong>.</p>
+        {games.length > 0 ? (
+          <div class="schedule-list">
+            {games.map((g) => <ScheduleCard game={g} />)}
+          </div>
+        ) : (
+          <p class="empty-state">Schedule not yet published for this season.</p>
+        )}
+      </>
+    ) : upcoming ? (
+      <div class="empty-state">
+        <strong>{upcoming.name}</strong> opens {new Date(upcoming.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.
+        Schedule will appear here when the season starts.
+        {upcoming.registrationUrl && (
+          <p style="margin-top: 0.75rem;"><a href={upcoming.registrationUrl}>Register →</a></p>
+        )}
+      </div>
+    ) : lastSeason ? (
+      <>
+        <div class="empty-state">
+          <strong>Next season info coming soon.</strong>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+            Last completed: <strong>{lastSeason.name}</strong>
+          </div>
+        </div>
+        {lastSeasonGames.length > 0 && (
+          <>
+            <h2>Final games of {lastSeason.name}</h2>
+            <div class="schedule-list">
+              {lastSeasonGames.map((g) => <ScheduleCard game={g} />)}
+            </div>
+          </>
+        )}
+      </>
+    ) : (
+      <p class="empty-state">No season data available yet. Schedule will appear here once the season starts.</p>
+    )}
+  </div>
+</Base>
+<style>
+  .schedule-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+</style>

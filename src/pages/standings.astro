@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import {
+  getActiveSeasons,
+  getMostRecentCompletedSeason,
+  getUpcomingSeason,
+} from '../lib/leagueops';
+
+const active = await getActiveSeasons();
+const inSeason = active.length > 0;
+const upcoming = inSeason ? null : await getUpcomingSeason();
+const lastSeason = inSeason ? null : await getMostRecentCompletedSeason();
+---
+<Base title="Standings" active="/standings">
+  <div class="container">
+    <h2>Standings</h2>
+    {inSeason ? (
+      <p class="empty-state">
+        Standings for <strong>{active[0].name}</strong> will appear here once
+        the division-by-division standings endpoint is wired up
+        (<code>/api/v1/seasons/{active[0].slug}/divisions/&lt;id&gt;/standings</code>).
+      </p>
+    ) : upcoming ? (
+      <div class="empty-state">
+        <strong>{upcoming.name}</strong> hasn't started yet. Standings will appear
+        once games are played.
+      </div>
+    ) : lastSeason ? (
+      <div class="empty-state">
+        <strong>Final standings — {lastSeason.name}</strong>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem;">
+          Wire up the per-division standings rendering as a v2 step.
+        </div>
+      </div>
+    ) : (
+      <p class="empty-state">No season data available yet.</p>
+    )}
+  </div>
+</Base>

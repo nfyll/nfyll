@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import ClubGrid from '../components/ClubGrid.astro';
+---
+<Base title="Member Clubs" active="/clubs">
+  <div class="container">
+    <h2>Member clubs</h2>
+    <p>
+      NFYLL is made up of {/* count handled in ClubGrid */} partner clubs across
+      northeast Florida. Each club runs its own program; NFYLL coordinates the
+      league season and inter-club play.
+    </p>
+    <ClubGrid />
+  </div>
+</Base>
