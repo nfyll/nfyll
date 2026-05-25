@@ -6,6 +6,7 @@
  * meantime, consistent with the bordered-square frame of real logos.
  */
 import ameliaIsland from '../assets/brand/clubs/amelia-island.png';
+import boldCity from '../assets/brand/clubs/bold-city.png';
 import bulldogsLc from '../assets/brand/clubs/bulldogs-lc.png';
 import creeks from '../assets/brand/clubs/creeks.png';
 import filc from '../assets/brand/clubs/filc.png';
@@ -28,7 +29,7 @@ function isLogoClub(c: ClubEntry): c is LogoClub { return 'logo' in c; }
 
 const clubs: ClubEntry[] = [
   { name: 'Amelia Island Hammerheads',     town: 'Amelia Island, FL',     logo: ameliaIsland },
-  { name: 'Bold City Eagles',              town: 'Jacksonville, FL',      monogram: 'BC',  color: '#1B4D7E' },
+  { name: 'Bold City Eagles',              town: 'Jacksonville, FL',      logo: boldCity,    url: 'https://www.boldcitylaxevents.com/' },
   { name: 'Bulldogs LC',                   town: 'Jacksonville, FL',      logo: bulldogsLc,  url: 'https://www.bolles.org/middle/athletics/spring-sports/lacrosse' },
   { name: 'Creeks Youth Lacrosse',         town: 'St. Johns, FL',         logo: creeks,   url: 'https://creekslax.com' },
   { name: 'Fleming Island Lacrosse Club',  town: 'Fleming Island, FL',    logo: filc,     url: 'https://filc.us' },
