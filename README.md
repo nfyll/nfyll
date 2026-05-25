@@ -27,7 +27,7 @@ src/
     leagueops.ts             — typed client for Sean's LeagueOps REST API; STUB pending @nfyll/leagueops-types
   assets/brand/
     nfyll-logo.jpg           — main NFYLL mark
-    clubs/                   — member-club logos (see /Volumes/Crucial X10/tmp/nfyll-brand-assets/README.md for provenance)
+    clubs/                   — member-club logos (provenance: SE CDN via Wayback snapshot 2023-11-28; see git history)
 public/
   logo.png                   — favicon + OG image (currently the same NFYLL logo; swap with a 512×512 square version when one exists)
 ```
@@ -41,7 +41,7 @@ slate + emerald until Dave/Sean confirm NFYLL's actual brand colors. Search for
 ## LeagueOps integration
 
 `src/lib/leagueops.ts` is a typed stub that mirrors the contract proposed in
-`/Volumes/Crucial X10/tmp/nfyll-leagueops-contract-proposal.md`. Once Sean
+[`docs/leagueops-api-contract.md`](docs/leagueops-api-contract.md). Once Sean
 publishes `@nfyll/leagueops-types`, replace the inline types with
 `import type { Season, Game, StandingRow } from '@nfyll/leagueops-types'`
 and point the fetch base URL at the live LeagueOps host.
