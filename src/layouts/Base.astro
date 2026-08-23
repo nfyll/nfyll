@@ -20,9 +20,7 @@ const navLinks: Array<{ href: string; label: string }> = [
   { href: '/about', label: 'About' },
   { href: '/clubs', label: 'Clubs' },
   { href: '/schedule', label: 'Schedule' },
-  // Sponsors hidden until FL charitable-solicitation registration renews.
-  // Page route still exists at /sponsors — just unlinked from nav.
-  // { href: '/sponsors', label: 'Sponsors' },
+  { href: '/sponsors', label: 'Sponsors' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -282,6 +280,20 @@ const navLinks: Array<{ href: string; label: string }> = [
       color: rgba(255,255,255,0.55);
       font-size: 0.78rem;
     }
+    .footer-solicitation {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.72rem;
+      /* Deliberately lighter-on-dark than the copyright line above: the statute
+         says "conspicuously display", so this must not be the dimmest text present.
+         No max-width — it spans the footer rather than sitting in a narrow column. */
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.5;
+    }
+    .footer-solicitation a {
+      color: inherit;
+      text-decoration: underline;
+    }
     @media (max-width: 800px) {
       .site-footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     }
@@ -321,6 +333,7 @@ const navLinks: Array<{ href: string; label: string }> = [
           <li><a href="/about">About</a></li>
           <li><a href="/clubs">Member Clubs</a></li>
           <li><a href="/schedule">Schedule</a></li>
+          <li><a href="/sponsors">Sponsors</a></li>
         </ul>
       </div>
       <div>
@@ -334,6 +347,25 @@ const navLinks: Array<{ href: string; label: string }> = [
     </div>
     <div class="site-footer-legal">
       © {new Date().getFullYear()} North Florida Youth Lacrosse League · 501(c)(3) nonprofit · EIN 83-2612765
+      {/* Ch. 496 F.S. (Solicitation of Contributions Act) requires the registration
+          number AND this statement, in capital letters, on every solicitation,
+          written confirmation, receipt, or reminder of a contribution. It lives in
+          the site-wide footer so any page that ever asks for a gift is covered by
+          construction. Wording is prescribed by statute — do not paraphrase, do not
+          sentence-case. Registration CH57374 expires 2027-12-21; renew before then
+          or this claim goes stale.
+
+          ⚠ The expiration above is from the CORRECTED compliance letter
+          (sha256 32fa170b…). FDACS recalled an earlier copy of the same letter that
+          misprinted the year as 2026 — do not "fix" this back. See
+          projects/fdacs-renewal-2026/certificates/README.md. */}
+      <span class="footer-solicitation">
+        Florida Charitable Solicitation Registration <strong>CH57374</strong> ·
+        A COPY OF THE OFFICIAL REGISTRATION AND FINANCIAL INFORMATION MAY BE OBTAINED
+        FROM THE DIVISION OF CONSUMER SERVICES BY CALLING TOLL-FREE{' '}
+        <a href="tel:18004357352">(800-435-7352)</a> WITHIN THE STATE. REGISTRATION
+        DOES NOT IMPLY ENDORSEMENT, APPROVAL, OR RECOMMENDATION BY THE STATE.
+      </span>
     </div>
   </footer>
   <script is:inline>
