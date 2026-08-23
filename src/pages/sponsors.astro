@@ -62,10 +62,36 @@ import Base from '../layouts/Base.astro';
       <p>Not every sponsor writes a check. We also gratefully accept in-kind support — field maintenance, ref fees, equipment for kids who can't afford their own, water and gatorade for the sidelines, photography for our member-club rosters. Reach out at the email above.</p>
     </section>
 
+    {/* Deductibility language is deliberately split, and deliberately hedged.
+
+        The prior wording — "Sponsorships and donations are tax-deductible to the
+        fullest extent allowed by law" — was over-broad on the sponsorship half.
+        Every tier on this page returns something substantial to the payor
+        (banner, jersey logo, title billing), so a sponsorship is a quid pro quo
+        transaction, not a charitable gift in full: only the excess over the fair
+        market value of what the sponsor gets back can be a §170 contribution.
+        For a business the whole payment is usually deductible anyway, but under
+        §162 as an advertising/promotional expense — a different line on a
+        different return, which is why we must not call it a charitable
+        deduction for them.
+
+        Same correction FILC made on its /about page (FI-LAX/filc#772): split the
+        claim, do not drop it, and point people at their own advisor.
+
+        Do NOT re-merge these two sentences back into one. Do NOT restore the
+        "Tax-deductible" heading — the heading itself was making the claim.
+
+        Related: IRC §513(i) and Treas. Reg. §1.513-4 govern whether these same
+        tier benefits are mere "acknowledgement" (not taxable to NFYLL) or
+        "advertising" (unrelated business income). See the UBIT note in the PR
+        that introduced this block. */}
     <aside class="legal-card">
-      <h3>Tax-deductible</h3>
-      <p>NFYLL operates as North Florida Lacrosse Inc., a 501(c)(3) public charity. Sponsorships and donations are tax-deductible to the fullest extent allowed by law.</p>
-      <p class="legal-meta">EIN <strong>83-2612765</strong> · Florida DR-14 sales-tax exemption on file · Determination letter available on request.</p>
+      <h3>Sponsorships, donations, and your taxes</h3>
+      <p>NFYLL operates as North Florida Lacrosse Inc., a 501(c)(3) public charity. <strong>Donations</strong> — a gift given with nothing expected in return — are tax-deductible as charitable contributions to the extent allowed by law.</p>
+      <p><strong>Sponsorships are not the same thing.</strong> Every tier above returns something to you — field-side signage, logo placement, title billing — so a sponsorship is not a charitable gift to the extent of the value you receive back. Businesses more often deduct a sponsorship as an ordinary advertising or promotional expense instead, which is frequently the simpler and better treatment. Either way, we will send you a written acknowledgement describing what your sponsorship received in return, so your accountant can characterize it correctly.</p>
+      <p><strong>In-kind support</strong> follows the same rule: it counts as a contribution only to the extent it exceeds the value of anything returned to you.</p>
+      <p class="legal-meta">NFYLL is not a tax advisor — check with yours about your own return.</p>
+      <p class="legal-meta">EIN <strong>83-2612765</strong> · Florida DR-14 sales-tax exemption on file · Determination letter available on request. Verify our charity status on the IRS Tax Exempt Organization Search using EIN <strong>83-2612765</strong>.</p>
       <p class="legal-meta">Florida Charitable Solicitation Registration <strong>CH57374</strong> (expires December 21, 2027). The statement mandated by Ch. 496, F.S. appears in the footer of every page.</p>
     </aside>
   </div>
