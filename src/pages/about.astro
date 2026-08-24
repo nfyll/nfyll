@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { clubCountWordTitle } from '../data/clubs';
 ---
 <Base title="About" active="/about">
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">ABOUT THE LEAGUE</span>
       <h1>How NFYLL works</h1>
-      <p class="lede">Nine independent youth clubs across northeast Florida. One Saturday-morning venue. One spring season a year. Boys, grades PK through 8.</p>
+      <p class="lede">{clubCountWordTitle} independent youth clubs across northeast Florida. One Saturday-morning venue. One spring season a year. Boys, grades PK through 8.</p>
     </div>
   </section>
 
