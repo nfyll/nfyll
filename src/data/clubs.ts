@@ -49,7 +49,7 @@ export const clubs: ClubEntry[] = [
   { name: 'Creeks Youth Lacrosse',         town: 'St. Johns, FL',         logo: creeks,       url: 'https://creekslax.com' },
   { name: 'Fleming Island Lacrosse Club',  town: 'Fleming Island, FL',    logo: filc,         url: 'https://filc.us' },
   { name: 'Jax Lax',                       town: 'Jacksonville, FL',      logo: jaxLax,       url: 'https://jaxlax.leagueapps.com/' },
-  { name: 'NPAA Panthers',                 town: 'Ponte Vedra Beach, FL', logo: npaaPanthers, url: 'https://www.npaalacrosse.com/' },
+  { name: 'NPAA Panthers',                 town: 'Ponte Vedra, FL',       logo: npaaPanthers, url: 'https://www.npaalacrosse.com/' },
   { name: 'Ponte Vedra Riptide Lacrosse',  town: 'Ponte Vedra, FL',       logo: ponteVedra,   url: 'https://www.pontevedralax.com/' },
   { name: 'Redhawks',                      town: 'Gainesville, FL',       logo: redhawks,     url: 'https://www.gainesvilleyouthlax.com/' },
 ];
