@@ -1,13 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import ClubGrid from '../components/ClubGrid.astro';
+// NB: .eyebrow has no text-transform on this page (Base's <style> is
+// Astro-scoped), so the eyebrow types its caps literally, like /about.
+import { clubCountWord, clubCountWordTitle } from '../data/clubs';
 ---
 <Base title="Member Clubs" active="/clubs">
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">EIGHT CLUBS</span>
+      <span class="eyebrow">{clubCountWord.toUpperCase()} CLUBS</span>
       <h1>Member clubs</h1>
-      <p class="lede">Eight independent youth programs across northeast Florida feed into NFYLL. Each runs its own practices, registration, and coaching. They come together every Saturday at Julington Creek.</p>
+      <p class="lede">{clubCountWordTitle} independent youth programs across northeast Florida feed into NFYLL. Each runs its own practices, registration, and coaching. They come together every Saturday at Julington Creek.</p>
     </div>
   </section>
 
