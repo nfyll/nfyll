@@ -7,6 +7,10 @@ import {
   getUpcomingSeason,
   getSeasonSchedule,
 } from '../lib/leagueops';
+import { spring2027, formatSeasonDate } from '../data/seasons/spring-2027';
+
+// Spring 2027 dates stay off this page until the board approves them.
+const announced = !spring2027.draft;
 
 const active = await getActiveSeasons();
 const inSeason = active.length > 0;
@@ -43,7 +47,9 @@ const totalGames = games.length;
       <span class="eyebrow">{showingArchive ? 'ARCHIVE' : (inSeason ? 'IN SEASON' : 'OFF-SEASON')}</span>
       <h1>{showingArchive ? `${lastSeason!.name} schedule` : 'Schedule'}</h1>
       {showingArchive && (
-        <p class="lede">{totalGames} games across {orderedGroups.length} Saturdays at Julington Creek. Next season opens January 2027.</p>
+        <p class="lede">{totalGames} games across {orderedGroups.length} Saturdays at Julington Creek. {announced
+          ? <a href="/spring-2027">Spring 2027 opens {formatSeasonDate(spring2027.openingDay)} →</a>
+          : 'Spring 2027 dates will be announced soon.'}</p>
       )}
       {inSeason && (
         <p class="lede">All {active[0]!.name} games at Julington Creek Plantation Park. Times in Eastern.</p>

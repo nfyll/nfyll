@@ -1,0 +1,277 @@
+---
+import Base from '../layouts/Base.astro';
+import { clubCountWordTitle } from '../data/clubs';
+import { spring2027, formatSeasonDate, gameDayCount } from '../data/seasons/spring-2027';
+
+const s = spring2027;
+const short = (iso: string) => formatSeasonDate(iso, { month: 'long', day: 'numeric' });
+const monthOf = (iso: string) => formatSeasonDate(iso, { month: 'short' });
+const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
+---
+<Base
+  title="Spring 2027 season"
+  description={`NFYLL Spring 2027: opening day ${short(s.openingDay)}, ${gameDayCount} game Saturdays, and a season-ending jamboree on ${short(s.jamboree)}.`}
+  active="/schedule"
+>
+  {s.draft && (
+    <aside class="draft-ribbon" role="note">
+      <div class="container"><strong>Draft for Review.</strong> Not published. Dates are not final until the board approves them.</div>
+    </aside>
+  )}
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Spring 2027 · Season Announcement</span>
+      <h1>Opening Day Is Saturday, {short(s.openingDay)}</h1>
+      <p class="lede">
+        The Spring 2027 season runs {gameDayCount} game Saturdays at Julington Creek Plantation Park and
+        finishes with the jamboree on {formatSeasonDate(s.jamboree)}. We start a little later this year,
+        with no games on spring break or Easter weekend.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/clubs">Register Through Your Club →</a>
+        <a class="btn btn-text" href="#dates">See Every Saturday →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="glance" aria-label="Season at a glance">
+      <div class="glance-card">
+        <span class="glance-eyebrow">Practices</span>
+        <h3>Week of {short(s.practicesWeekOf)}</h3>
+        <p>Clubs set their own practice schedules. Check with your club for days and fields.</p>
+      </div>
+      <div class="glance-card">
+        <span class="glance-eyebrow">Opening Day</span>
+        <h3>{formatSeasonDate(s.openingDay)}</h3>
+        <p>First games of the season, all divisions.</p>
+      </div>
+      <div class="glance-card">
+        <span class="glance-eyebrow">Regular Season</span>
+        <h3>{gameDayCount} Saturdays</h3>
+        <p>One game day a week. Saturdays only.</p>
+      </div>
+      <div class="glance-card glance-card--accent">
+        <span class="glance-eyebrow">Jamboree</span>
+        <h3>{formatSeasonDate(s.jamboree)}</h3>
+        <p>Every team plays a double header to close the season.</p>
+      </div>
+    </section>
+
+    <section id="dates" class="dates">
+      <h2>Every Saturday, March Through May</h2>
+      <p class="lede">Game times and matchups will be posted on the <a href="/schedule">Schedule</a> page before opening day.</p>
+
+      <ol class="day-list">
+        {s.days.map((d) => (
+          <li class={`day-row day-row--${d.kind}`}>
+            <span class="day-date" aria-hidden="true">
+              <span class="day-month">{monthOf(d.date)}</span>
+              <span class="day-num">{dayOf(d.date)}</span>
+            </span>
+            <span class="day-body">
+              <strong>{d.label}</strong>
+              <span class="day-meta">
+                {formatSeasonDate(d.date)}{d.note ? ` · ${d.note}` : ''}
+              </span>
+            </span>
+            <span class={`day-tag day-tag--${d.kind}`}>
+              {d.kind === 'game' ? 'Games' : d.kind === 'dark' ? 'Off' : 'Jamboree'}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="why">
+      <h2>What Is Different This Year</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>A Later Start</h3>
+          <p>
+            Clubs asked for a start after winter flag football wraps up. Practices begin the week of
+            {short(s.practicesWeekOf)} and the first games are {short(s.openingDay)}.
+          </p>
+        </div>
+        <div class="why-card">
+          <h3>Off for Spring Break and Easter</h3>
+          <p>
+            No games Saturday, March 20 for spring break or Saturday, March 27 for Easter weekend.
+            Duval and St. Johns schools are out March 15–19, Clay schools March 22–26, and Easter is
+            Sunday, March 28.
+          </p>
+        </div>
+        <div class="why-card">
+          <h3>Done Before Mother's Day</h3>
+          <p>
+            The jamboree on Saturday, May 8 is the last day of the season. Mother's Day is Sunday, May 9.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="register">
+      <div class="register-card">
+        <div>
+          <h2>How to Sign Up</h2>
+          <p>
+            Players register with their local club, not with the league. {clubCountWordTitle} member clubs
+            across northeast Florida field teams from PK through 8th grade.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/clubs">Find Your Club →</a>
+      </div>
+      <p class="fineprint">Questions about the season calendar? <a href="/contact">Contact the league</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  h1, h2, h3 { text-wrap: balance; }
+  h2 { margin: 2.75rem 0 0.75rem; }
+
+  .draft-ribbon {
+    background: var(--sand-gold);
+    color: var(--deep-river);
+    font-size: 0.9rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(16, 54, 87, 0.15);
+  }
+
+  .page-hero {
+    background: linear-gradient(180deg, var(--sky-wash), var(--sky-wash-deep));
+    border-bottom: 1px solid var(--hairline);
+    padding: 3rem 0 2.5rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+    margin: 0.5rem 0 0.9rem;
+    max-width: 18ch;
+  }
+  .page-hero .lede { color: var(--ink); font-size: 1.08rem; max-width: 680px; margin: 0 0 1.5rem; }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  a.btn-primary { background: var(--sunshine); color: var(--white); padding: 0.7rem 1.15rem; }
+  a.btn-primary:hover { background: var(--river-blue); color: var(--white); }
+  .btn-text { color: var(--river-blue); padding: 0.7rem 0; }
+  .btn-text:hover { color: var(--sunshine); }
+
+  .lede { color: var(--muted); max-width: 680px; }
+
+  /* At a glance */
+  .glance {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2.25rem 0 0;
+  }
+  @media (max-width: 900px) { .glance { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .glance { grid-template-columns: 1fr; } }
+  .glance-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.15rem 1.2rem;
+    box-shadow: var(--shadow-card);
+  }
+  .glance-card--accent { border-top: 3px solid var(--sunshine); }
+  .glance-eyebrow {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .glance-card h3 { margin: 0.35rem 0 0.4rem; font-size: 1.2rem; }
+  .glance-card p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+  /* Saturday list */
+  .dates { scroll-margin-top: 5rem; }
+  .day-list {
+    list-style: none; margin: 1.25rem 0 0; padding: 0;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .day-row {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .day-row:last-child { border-bottom: none; }
+  .day-date {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 56px; height: 56px;
+    border-radius: 8px;
+    background: var(--sky-wash);
+    color: var(--deep-river);
+    line-height: 1;
+  }
+  .day-month { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .day-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.45rem; font-weight: 700; margin-top: 0.2rem;
+  }
+  .day-body { display: flex; flex-direction: column; min-width: 0; }
+  .day-body strong { color: var(--deep-river); font-size: 1rem; }
+  .day-meta { color: var(--muted); font-size: 0.88rem; }
+  .day-tag {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.28rem 0.6rem; border-radius: 999px; white-space: nowrap;
+  }
+  .day-tag--game { background: rgba(27, 77, 126, 0.10); color: var(--river-blue); }
+  .day-tag--dark { background: #EEF1F4; color: var(--muted); }
+  .day-tag--jamboree { background: var(--sunshine); color: var(--white); }
+
+  @media (max-width: 480px) {
+    /* The row label already says what the day is; drop the pill so labels never wrap awkwardly. */
+    .day-row { grid-template-columns: 56px 1fr; gap: 0.85rem; padding: 0.75rem 0.9rem; }
+    .day-tag { display: none; }
+  }
+
+  .day-row--dark { background: #FAFBFC; }
+  .day-row--dark .day-date { background: transparent; border: 1px dashed var(--hairline); color: var(--muted); }
+  .day-row--dark .day-body strong { color: var(--muted); font-weight: 600; }
+  .day-row--jamboree { background: var(--sunshine-soft); }
+  .day-row--jamboree .day-date { background: var(--sunshine); color: var(--white); }
+
+  /* What is different */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 800px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--sand-gold);
+    border-radius: 8px;
+    padding: 1.1rem 1.2rem;
+  }
+  .why-card h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .why-card p { margin: 0; font-size: 0.94rem; }
+
+  /* Register */
+  .register { margin-top: 2.5rem; }
+  .register-card {
+    display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between;
+    background: var(--deep-river);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 1.6rem 1.75rem;
+  }
+  .register-card > div { flex: 1 1 320px; }
+  .register-card h2 { color: var(--white); margin: 0 0 0.4rem; }
+  .register-card p { margin: 0; max-width: 560px; }
+  .register-card a.btn-primary:hover { background: var(--sand-gold); color: var(--deep-river); }
+  .fineprint { color: var(--muted); font-size: 0.88rem; margin: 0.9rem 0 0; }
+</style>

@@ -9,6 +9,7 @@ import {
   getUpcomingSeason,
   getSeasonSchedule,
 } from '../lib/leagueops';
+import { spring2027, formatSeasonDate, gameDayCount } from '../data/seasons/spring-2027';
 
 const active = await getActiveSeasons();
 const inSeason = active.length > 0;
@@ -20,13 +21,24 @@ const nextGames = inSeason
       .slice(0, 4)
   : [];
 
+// Spring 2027 dates stay off the public pages until the board approves them
+// (spring2027.draft === false). Until then the copy stays date-free.
+const announced = !spring2027.draft;
+const openingLong = formatSeasonDate(spring2027.openingDay);
+const seasonMonths = `${formatSeasonDate(spring2027.openingDay, { month: 'long' })}–${formatSeasonDate(spring2027.jamboree, { month: 'long' })}`;
+const countWords = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const gameDayWord = countWords[gameDayCount] ?? String(gameDayCount);
+const nextSeasonLine = announced
+  ? `Spring 2027 opens ${openingLong}.`
+  : 'Spring 2027 dates will be announced soon.';
+
 const eyebrow = inSeason ? `${active[0].name.toUpperCase()} · IN-SEASON` : 'OFF-SEASON';
 const headline = inSeason
   ? 'Saturday games at Julington Creek'
   : 'North Florida Youth Lacrosse League';
 const subhead = inSeason
-  ? `${clubCount} clubs. PK–8 boys. One field, one morning a week, February through May.`
-  : `Boys youth lacrosse, grades PK–8, across northeast Florida. ${clubCountWordTitle} member clubs. Next season opens January 2027.`;
+  ? `${clubCount} clubs. PK–8 boys. One site, six fields, one Saturday morning a week, all spring.`
+  : `Boys youth lacrosse, grades PK–8, across northeast Florida. ${clubCountWordTitle} member clubs. ${nextSeasonLine}`;
 ---
 <Base title={undefined} active="/">
   <section class="home-hero">
@@ -43,8 +55,12 @@ const subhead = inSeason
             </>
           ) : (
             <>
-              <a class="btn btn-primary" href="/schedule">Browse the 2026 archive →</a>
-              <a class="btn btn-text" href="/clubs">Meet the {clubCount} member clubs →</a>
+              {announced ? (
+                <a class="btn btn-primary" href="/spring-2027">See the 2027 Season Dates →</a>
+              ) : (
+                <a class="btn btn-primary" href="/schedule">Browse the 2026 Archive →</a>
+              )}
+              <a class="btn btn-text" href="/clubs">Meet the {clubCount} Member Clubs →</a>
             </>
           )}
         </div>
@@ -60,9 +76,9 @@ const subhead = inSeason
       <div class="container offseason-banner-inner">
         <div>
           <strong>Off-season.</strong>
-          Next games February 2027 — the {lastSeason.name} archive is open.
+          {nextSeasonLine} The {lastSeason.name} archive is open.
         </div>
-        <a href="/schedule" class="banner-link">Browse the archive →</a>
+        <a href="/schedule" class="banner-link">Browse the Archive →</a>
       </div>
     </aside>
   )}
@@ -93,12 +109,16 @@ const subhead = inSeason
         </div>
         <div class="nugget">
           <span class="nugget-eyebrow">When</span>
-          <h3>One Saturday a week, Feb–May</h3>
-          <p>Spring rec season only — typically eight Saturdays plus a season-ending jamboree.</p>
+          <h3>{announced ? `One Saturday a week, ${seasonMonths}` : 'One Saturday a week, every spring'}</h3>
+          <p>
+            {announced
+              ? `Spring rec season only. In 2027, ${gameDayWord} game Saturdays plus a season-ending jamboree.`
+              : 'Spring rec season only. Game Saturdays plus a season-ending jamboree.'}
+          </p>
         </div>
         <div class="nugget">
           <span class="nugget-eyebrow">Where</span>
-          <h3>One field, one venue</h3>
+          <h3>One site, six fields</h3>
           <p>All games at Julington Creek Plantation Park · 3060 Racetrack Rd, St. Johns, FL.</p>
         </div>
       </div>
