@@ -1,6 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import { clubCountWordTitle } from '../data/clubs';
+import { spring2027 } from '../data/seasons/spring-2027';
+
+// Division label: Grade, Class, Age (Dave Vernon, 2026-11-08, issue #12).
+// Class years roll each season: class = season year + 12 - grade (PK = -1, K = 0).
+const seasonYear = Number(spring2027.openingDay.slice(0, 4));
+const gradeName = (g: number) => (g === -1 ? 'PK' : g === 0 ? 'K' : String(g));
+const divisionLabel = (lo: number, hi: number, age: string) => {
+  const hiClass = seasonYear + 12 - hi;
+  const loClass = seasonYear + 12 - lo;
+  return `Gr ${gradeName(lo)}-${gradeName(hi)} Class ${hiClass}/${String(loClass).slice(-2)} ${age}`;
+};
 ---
 <Base title="About" active="/about">
   <section class="page-hero">
@@ -40,22 +51,27 @@ import { clubCountWordTitle } from '../data/clubs';
           <span>Division</span><span>Format</span><span>What it means</span>
         </div>
         <div class="div-row">
-          <span><strong>1st / 2nd grade</strong></span>
+          <span><strong>{divisionLabel(-1, 0, '6U')}</strong></span>
+          <span class="format format-3v3">3v3</span>
+          <span>Co-ed, small-sided, sponge ball, no goalies, no contact. Protective goggles only: no helmets, pads or gloves. The point is getting comfortable with a stick and a ball.</span>
+        </div>
+        <div class="div-row">
+          <span><strong>{divisionLabel(1, 2, '8U')}</strong></span>
           <span class="format format-4v4">4v4</span>
           <span>Small-sided, no goalies, no body or stick checks. The point is touches on the ball.</span>
         </div>
         <div class="div-row">
-          <span><strong>3rd / 4th grade</strong></span>
+          <span><strong>{divisionLabel(3, 4, '10U')}</strong></span>
           <span class="format format-7v7">7v7</span>
           <span>Half-field play, goalies, light contact. Bridge between learning the sport and full-field rules.</span>
         </div>
         <div class="div-row">
-          <span><strong>5th / 6th grade</strong></span>
+          <span><strong>{divisionLabel(5, 6, '12U')}</strong></span>
           <span class="format format-10v10">10v10</span>
           <span>Full-sided rules with full equipment. Closest to high-school lacrosse, scaled to the age group.</span>
         </div>
         <div class="div-row">
-          <span><strong>7th / 8th grade</strong></span>
+          <span><strong>{divisionLabel(7, 8, '14U')}</strong></span>
           <span class="format format-10v10">10v10</span>
           <span>Full-sided. This is where rec-league players bridge into middle-school and travel programs.</span>
         </div>
@@ -145,7 +161,7 @@ import { clubCountWordTitle } from '../data/clubs';
   }
   .div-row {
     display: grid;
-    grid-template-columns: 160px 90px 1fr;
+    grid-template-columns: 240px 90px 1fr;
     gap: 1rem;
     align-items: center;
     padding: 0.85rem 1rem;
@@ -171,7 +187,7 @@ import { clubCountWordTitle } from '../data/clubs';
     letter-spacing: 0.04em;
     text-align: center;
   }
-  .format-4v4 { background: var(--sand-gold-soft); color: #8a5a00; }
+  .format-3v3, .format-4v4 { background: var(--sand-gold-soft); color: #8a5a00; }
   .format-7v7 { background: var(--sunshine-soft); color: #b04a13; }
   .format-10v10 { background: rgba(27, 77, 126, 0.10); color: var(--river-blue); }
   @media (max-width: 640px) {
