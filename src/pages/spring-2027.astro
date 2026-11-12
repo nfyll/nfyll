@@ -344,7 +344,9 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
     display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem;
   }
   .age-card {
-    display: flex; flex-direction: column; gap: 0.35rem;
+    /* Subgrid: grade / group / graduation / born share row tracks across cards in a row. */
+    display: grid; grid-template-rows: subgrid; grid-row: span 4; gap: 0.35rem;
+    align-items: start;
     border-radius: 10px; padding: 1.1rem 1rem 1rem;
   }
   .age-card-grade { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
