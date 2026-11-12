@@ -80,6 +80,9 @@ const divisionLabel = (lo: number, hi: number, age: string) => {
 
     <section>
       <h2>USA Lacrosse membership</h2>
+      <a class="usal-logo-link usal-logo-link--about" href="https://www.usalacrosse.com" target="_blank" rel="noopener">
+        <img class="usal-logo" src="/usa-lacrosse-logo.png" alt="USA Lacrosse" width="180" height="73" loading="lazy" />
+      </a>
       <p>Every player and coach must be a current USA Lacrosse member — it's both league rule and source of secondary insurance coverage during play. Memberships renew annually.</p>
       <p>See current membership options and prices, and sign up or renew, at <a href="https://www.usalacrosse.com/membership" target="_blank" rel="noopener">usalacrosse.com/membership ↗</a>. Many member clubs handle this at registration on your behalf.</p>
     </section>
@@ -112,6 +115,7 @@ const divisionLabel = (lo: number, hi: number, age: string) => {
 </Base>
 
 <style>
+  .usal-logo-link--about .usal-logo { width: 180px; }
   .page-hero {
     background: var(--sky-wash);
     border-bottom: 1px solid var(--hairline);
