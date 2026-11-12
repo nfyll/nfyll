@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { clubCountWordTitle } from '../data/clubs';
 import { spring2027, formatSeasonDate, gameDayCount } from '../data/seasons/spring-2027';
+import { ageChartBirthYears, ageChartRows } from '../data/age-chart-2026-27';
 
 const s = spring2027;
 const short = (iso: string) => formatSeasonDate(iso, { month: 'long', day: 'numeric' });
@@ -109,6 +110,37 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
           </p>
         </div>
       </div>
+    </section>
+
+    <section id="age-groups" class="age-groups">
+      <h2>Age Groups</h2>
+      <p>
+        NFYLL follows the USA Lacrosse Club and Event Age Chart (15 months) for play between September 1, 2026
+        and August 31, 2027. Teams are grouped by graduation year, and a player's date of birth decides
+        placement. Players born in June, July or August may play with either of the two graduation years
+        shown. Players should play with their class grade and should not play down a year.
+      </p>
+
+      <div class="age-table-wrap" role="region" aria-labelledby="age-table-caption" tabindex="0">
+        <table class="age-table">
+          <caption id="age-table-caption">Graduation Year by Birth Month and Birth Year</caption>
+          <thead>
+            <tr>
+              <th scope="col">Birth Month</th>
+              {ageChartBirthYears.map((y) => <th scope="col">{y}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {ageChartRows.map((r) => (
+              <tr>
+                <th scope="row">{r.month}</th>
+                {r.years.map((g) => <td class={g.includes('/') ? 'either' : undefined}>{g}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">Source: <a href="https://www.usalacrosse.com/game/age-verification">USA Lacrosse</a>.</p>
     </section>
 
     <section class="register">
@@ -259,6 +291,30 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
   }
   .why-card h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
   .why-card p { margin: 0; font-size: 0.94rem; }
+
+  /* Age groups */
+  .age-table-wrap {
+    overflow-x: auto;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  .age-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+  .age-table caption {
+    caption-side: top; text-align: left;
+    padding: 0.8rem 1rem 0.4rem;
+    font-weight: 700; color: var(--deep-river);
+  }
+  .age-table th, .age-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--hairline);
+    text-align: center; white-space: nowrap;
+  }
+  .age-table thead th { background: var(--sky-wash); color: var(--deep-river); }
+  .age-table tbody th { text-align: left; color: var(--deep-river); font-weight: 600; }
+  .age-table tbody tr:last-child th, .age-table tbody tr:last-child td { border-bottom: none; }
+  .age-table td.either { background: var(--sunshine-soft); }
 
   /* Register */
   .register { margin-top: 2.5rem; }
