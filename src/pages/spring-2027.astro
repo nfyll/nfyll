@@ -122,9 +122,9 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
       <ul class="age-cards">
         {nfyllAgeGroups.map((g) => (
           <li class={`age-card band-${g.group}`}>
-            <span class="age-card-grade">{g.grade}</span>
+            <span class="age-card-grade">{g.grade.map((p) => (<>{p.text}{p.sup && <sup>{p.sup}</sup>}</>))}</span>
             <span class="age-card-group">{g.group}</span>
-            <span class="age-card-classes">Classes of {g.graduation}</span>
+            <span class="age-card-classes">Graduation Years {g.graduation}</span>
             <span class="age-card-born">Born {g.born}</span>
           </li>
         ))}
@@ -139,7 +139,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
       <h3 class="age-subheading">Check a Birth Date</h3>
       <ul class="age-legend">
         {nfyllAgeGroups.map((g) => (
-          <li><span class={`age-swatch band-${g.group}`} aria-hidden="true"></span>{g.grade} · {g.group}</li>
+          <li><span class={`age-swatch band-${g.group}`} aria-hidden="true"></span><span>{g.grade.map((p) => (<>{p.text}{p.sup && <sup>{p.sup}</sup>}</>))} · {g.group}</span></li>
         ))}
       </ul>
       <div class="age-table-wrap" role="region" aria-labelledby="age-grid-caption" tabindex="0">
@@ -348,7 +348,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
     border-radius: 10px; padding: 1.1rem 1rem 1rem;
   }
   .age-card-grade { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
-  .age-card-group { font-size: 1.15rem; font-weight: 700; }
+  .age-card-group { font-size: 2.2rem; font-weight: 800; line-height: 1; }
   .age-card-classes { font-size: 0.95rem; font-weight: 600; }
   .age-card-born { font-size: 0.8rem; line-height: 1.35; }
   .age-subheading { margin: 2rem 0 0.5rem; font-size: 1.1rem; color: var(--deep-river); }
@@ -357,6 +357,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
     display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.88rem; color: var(--ink);
   }
   .age-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .age-cards sup, .age-legend sup { font-size: 0.55em; line-height: 0; vertical-align: super; }
   .age-swatch { display: inline-block; width: 0.95rem; height: 0.95rem; border-radius: 3px; }
   .age-grid td { font-weight: 700; min-width: 3.2rem; border-left: 1px solid rgba(255, 255, 255, 0.6); }
   .age-grid td.blank { background: #FAFBFC; }
