@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { clubCountWordTitle } from '../data/clubs';
 import { spring2027, formatSeasonDate, gameDayCount } from '../data/seasons/spring-2027';
+import { ageChartBirthYears, ageChartRows, nfyllAgeGroups } from '../data/age-chart-2026-27';
 
 const s = spring2027;
 const short = (iso: string) => formatSeasonDate(iso, { month: 'long', day: 'numeric' });
@@ -109,6 +110,58 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
           </p>
         </div>
       </div>
+    </section>
+
+    <section id="age-groups" class="age-groups">
+      <div class="age-heading">
+        <img src="/logo.png" alt="NFYLL" width="48" height="41" class="age-logo" loading="lazy" />
+        <h2>Age Groups</h2>
+      </div>
+      <p class="age-lead">Start with your child's grade this school year, 2026–27. Find the grade below to see the age group.</p>
+
+      <ul class="age-cards">
+        {nfyllAgeGroups.map((g) => (
+          <li class={`age-card band-${g.group}`}>
+            <span class="age-card-grade">Grades: <span class="age-card-grade-value">{g.grade.map((p, i) => (<>{i === 0 ? p.text.replace(/^Grades:\s*/, '') : p.text}{p.sup && <sup>{p.sup}</sup>}</>))}</span></span>
+            <span class="age-card-group">{g.group}</span>
+            <span class="age-card-classes">Graduation Years: <span class="age-card-years">{g.graduation}</span></span>
+            <span class="age-card-born">Born {g.born}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p>
+        A player's date of birth decides the group. The dates run from September 1, 2026, the start of this
+        school year, so a player's group does not change during the spring season. NFYLL plays in five two-year
+        age groups so that clubs have enough players to field teams.
+      </p>
+
+      <h3 class="age-subheading">Check a Birth Date</h3>
+      <ul class="age-legend">
+        {nfyllAgeGroups.map((g) => (
+          <li><span class={`age-swatch band-${g.group}`} aria-hidden="true"></span><span>{g.grade.map((p) => (<>{p.text}{p.sup && <sup>{p.sup}</sup>}</>))} · {g.group}</span></li>
+        ))}
+      </ul>
+      <div class="age-table-wrap" role="region" aria-labelledby="age-grid-caption" tabindex="0">
+        <table class="age-table age-grid">
+          <caption id="age-grid-caption">Age Group by Birth Month and Birth Year</caption>
+          <thead>
+            <tr>
+              <th scope="col">Birth Month</th>
+              {ageChartBirthYears.map((y) => <th scope="col">{y}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {ageChartRows.map((r) => (
+              <tr>
+                <th scope="row">{r.month}</th>
+                {r.groups.map((g) => <td class={g ? `band-${g}` : 'blank'}>{g ?? ''}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">Based on the <a href="https://www.usalacrosse.com/game/age-verification">USA Lacrosse</a> Age Grouping Quick Reference Table.</p>
     </section>
 
     <section class="register">
@@ -259,6 +312,65 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
   }
   .why-card h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
   .why-card p { margin: 0; font-size: 0.94rem; }
+
+  /* Age groups */
+  .age-heading { display: flex; align-items: center; gap: 0.75rem; margin: 2.75rem 0 0.75rem; }
+  .age-heading h2 { margin: 0; }
+  .age-logo { flex-shrink: 0; object-fit: contain; }
+  .age-table-wrap {
+    overflow-x: auto;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  .age-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+  .age-table caption {
+    caption-side: top; text-align: left;
+    padding: 0.8rem 1rem 0.4rem;
+    font-weight: 700; color: var(--deep-river);
+  }
+  .age-table th, .age-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--hairline);
+    text-align: center; white-space: nowrap;
+  }
+  .age-table thead th { background: var(--sky-wash); color: var(--deep-river); }
+  .age-table tbody th { text-align: left; color: var(--deep-river); font-weight: 600; }
+  .age-table tbody tr:last-child th, .age-table tbody tr:last-child td { border-bottom: none; }
+  .age-lead { font-size: 1.05rem; }
+  .age-cards {
+    list-style: none; margin: 1.25rem 0 1.25rem; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem;
+  }
+  .age-card {
+    /* Subgrid: grade / group / graduation / born share row tracks across cards in a row. */
+    display: grid; grid-template-rows: subgrid; grid-row: span 4; gap: 0.35rem;
+    align-items: start;
+    border-radius: 10px; padding: 1.1rem 1rem 1rem;
+  }
+  .age-card-grade { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
+  .age-card-grade-value { display: block; white-space: nowrap; }
+  .age-card-group { font-size: 2.2rem; font-weight: 800; line-height: 1; }
+  .age-card-classes { font-size: 0.95rem; font-weight: 600; }
+  .age-card-years { display: block; white-space: nowrap; }
+  .age-card-born { font-size: 0.8rem; line-height: 1.35; }
+  .age-subheading { margin: 2rem 0 0.5rem; font-size: 1.1rem; color: var(--deep-river); }
+  .age-legend {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.88rem; color: var(--ink);
+  }
+  .age-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .age-cards sup, .age-legend sup { font-size: 0.55em; line-height: 0; vertical-align: super; }
+  .age-swatch { display: inline-block; width: 0.95rem; height: 0.95rem; border-radius: 3px; }
+  .age-grid td { font-weight: 700; min-width: 3.2rem; border-left: 1px solid rgba(255, 255, 255, 0.6); }
+  .age-grid td.blank { background: #FAFBFC; }
+  /* Five distinct hues, one per group; text contrast is WCAG AA or better on each. */
+  .band-14U { background: #1D4E89; color: #FFFFFF; }
+  .band-12U { background: #1B7340; color: #FFFFFF; }
+  .band-10U { background: #B02A37; color: #FFFFFF; }
+  .band-8U { background: #663A96; color: #FFFFFF; }
+  .band-6U { background: #F2C230; color: #103657; }
 
   /* Register */
   .register { margin-top: 2.5rem; }
