@@ -124,7 +124,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
           <li class={`age-card band-${g.group}`}>
             <span class="age-card-grade">{g.grade.map((p) => (<>{p.text}{p.sup && <sup>{p.sup}</sup>}</>))}</span>
             <span class="age-card-group">{g.group}</span>
-            <span class="age-card-classes">Graduation Years {g.graduation}</span>
+            <span class="age-card-classes">Graduation Years <span class="age-card-years">{g.graduation}</span></span>
             <span class="age-card-born">Born {g.born}</span>
           </li>
         ))}
@@ -350,6 +350,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
   .age-card-grade { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
   .age-card-group { font-size: 2.2rem; font-weight: 800; line-height: 1; }
   .age-card-classes { font-size: 0.95rem; font-weight: 600; }
+  .age-card-years { display: block; white-space: nowrap; }
   .age-card-born { font-size: 0.8rem; line-height: 1.35; }
   .age-subheading { margin: 2rem 0 0.5rem; font-size: 1.1rem; color: var(--deep-river); }
   .age-legend {
