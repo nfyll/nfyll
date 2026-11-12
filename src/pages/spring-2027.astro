@@ -122,7 +122,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
       <ul class="age-cards">
         {nfyllAgeGroups.map((g) => (
           <li class={`age-card band-${g.group}`}>
-            <span class="age-card-grade">{g.grade.map((p) => (<>{p.text}{p.sup && <sup>{p.sup}</sup>}</>))}</span>
+            <span class="age-card-grade">Grades: <span class="age-card-grade-value">{g.grade.map((p, i) => (<>{i === 0 ? p.text.replace(/^Grades:\s*/, '') : p.text}{p.sup && <sup>{p.sup}</sup>}</>))}</span></span>
             <span class="age-card-group">{g.group}</span>
             <span class="age-card-classes">Graduation Years: <span class="age-card-years">{g.graduation}</span></span>
             <span class="age-card-born">Born {g.born}</span>
@@ -350,6 +350,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
     border-radius: 10px; padding: 1.1rem 1rem 1rem;
   }
   .age-card-grade { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
+  .age-card-grade-value { display: block; white-space: nowrap; }
   .age-card-group { font-size: 2.2rem; font-weight: 800; line-height: 1; }
   .age-card-classes { font-size: 0.95rem; font-weight: 600; }
   .age-card-years { display: block; white-space: nowrap; }
