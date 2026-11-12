@@ -10,12 +10,16 @@
 
 export type NfyllAgeGroup = '14U' | '12U' | '10U' | '8U' | '6U';
 
-export const nfyllAgeGroups: { group: NfyllAgeGroup; born: string; included: string }[] = [
-  { group: '14U', born: 'September 1, 2012 – August 31, 2014', included: '14U and 13U' },
-  { group: '12U', born: 'September 1, 2014 – August 31, 2016', included: '12U and 11U' },
-  { group: '10U', born: 'September 1, 2016 – August 31, 2018', included: '10U and 9U' },
-  { group: '8U', born: 'September 1, 2018 – August 31, 2020', included: '8U and 7U' },
-  { group: '6U', born: 'September 1, 2020 – August 31, 2022', included: '6U and one younger year' },
+/**
+ * Summary rows, led by grade as a quick reference. The grade only points to the group;
+ * the player's date of birth decides it.
+ */
+export const nfyllAgeGroups: { grade: string; group: NfyllAgeGroup; born: string; graduation: string }[] = [
+  { grade: '7th and 8th Grade', group: '14U', born: 'September 1, 2012 – August 31, 2014', graduation: '2031 and 2032' },
+  { grade: '5th and 6th Grade', group: '12U', born: 'September 1, 2014 – August 31, 2016', graduation: '2033 and 2034' },
+  { grade: '3rd and 4th Grade', group: '10U', born: 'September 1, 2016 – August 31, 2018', graduation: '2035 and 2036' },
+  { grade: '1st and 2nd Grade', group: '8U', born: 'September 1, 2018 – August 31, 2020', graduation: '2037 and 2038' },
+  { grade: 'Kindergarten and Pre-K', group: '6U', born: 'September 1, 2020 – August 31, 2022', graduation: '2039 and 2040' },
 ];
 
 export const ageChartBirthYears = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022] as const;

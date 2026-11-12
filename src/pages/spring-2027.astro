@@ -118,10 +118,16 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
         <h2>Age Groups</h2>
       </div>
       <p>
-        NFYLL plays in five two-year age groups: 14U, 12U, 10U, 8U and 6U. A player's date of birth decides the
-        group. The groups follow the USA Lacrosse age table for play between September 1, 2026 and August 31,
-        2027, with each NFYLL group covering two USA Lacrosse years so that clubs have enough players to field
-        teams.
+        Start with your child's grade this school year, 2026–27. The grade shows which age group to look at, and
+        the player's date of birth decides the group.
+      </p>
+      <p>
+        The dates run from September 1 to August 31. The September 1 that counts is the start of this school
+        year, September 1, 2026, so a player's group does not change during the spring season.
+      </p>
+      <p>
+        NFYLL plays in five two-year age groups so that clubs have enough players to field teams. Each group
+        covers two years of the USA Lacrosse age table.
       </p>
 
       <div class="age-table-wrap" role="region" aria-labelledby="age-summary-caption" tabindex="0">
@@ -129,17 +135,19 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
           <caption id="age-summary-caption">NFYLL Age Groups, Spring 2027</caption>
           <thead>
             <tr>
-              <th scope="col">NFYLL Age Group</th>
+              <th scope="col">Grade This School Year</th>
+              <th scope="col">Age Group</th>
               <th scope="col">Born</th>
-              <th scope="col">USA Lacrosse Years Included</th>
+              <th scope="col">Graduation Year</th>
             </tr>
           </thead>
           <tbody>
             {nfyllAgeGroups.map((g) => (
               <tr>
-                <th scope="row"><span class={`age-chip band-${g.group}`}>{g.group}</span></th>
+                <th scope="row">{g.grade}</th>
+                <td><span class={`age-chip band-${g.group}`}>{g.group}</span></td>
                 <td>{g.born}</td>
-                <td>{g.included}</td>
+                <td>{g.graduation}</td>
               </tr>
             ))}
           </tbody>
@@ -148,7 +156,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
 
       <div class="age-table-wrap" role="region" aria-labelledby="age-grid-caption" tabindex="0">
         <table class="age-table age-grid">
-          <caption id="age-grid-caption">Age Group by Birth Month and Birth Year</caption>
+          <caption id="age-grid-caption">Check by Birth Month and Birth Year</caption>
           <thead>
             <tr>
               <th scope="col">Birth Month</th>
