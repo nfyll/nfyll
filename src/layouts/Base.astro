@@ -302,6 +302,38 @@ const navLinks: Array<{ href: string; label: string }> = [
     @media (max-width: 800px) {
       .site-footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     }
+
+    /* USA Lacrosse logo — USA Lacrosse 2026 Logo & Color Guide.
+       Whole horizontal logo, natural ratio, fixed width (never under the 90px minimum).
+       Clear space: the link's 24px padding on all four sides is the guide's clear zone
+       (>= 80% of the "A" in USA at these sizes); nothing else may sit inside it.
+       No filter, shadow, opacity, transform, hover change or clipping on the logo. */
+    .usal-logo-link {
+      display: block;
+      width: fit-content;
+      padding: 24px;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .usal-logo {
+      display: block;
+      height: auto;
+      max-width: none;
+    }
+    .footer-member {
+      max-width: 1200px;
+      margin: 1.5rem auto 0;
+    }
+    .footer-member-label {
+      margin: 0;
+      padding: 0 24px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .footer-member .usal-logo { width: 150px; }
   </style>
   <slot name="head" />
 </head>
@@ -349,6 +381,12 @@ const navLinks: Array<{ href: string; label: string }> = [
           <li style="margin-top: 0.5rem;"><a href="mailto:board@nfyll.org">board@nfyll.org</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-member">
+      <p class="footer-member-label">Member League</p>
+      <a class="usal-logo-link usal-logo-link--footer" href="https://www.usalacrosse.com" target="_blank" rel="noopener">
+        <img class="usal-logo" src="/usa-lacrosse-logo-white-text.png" alt="USA Lacrosse" width="150" height="61" loading="lazy" />
+      </a>
     </div>
     <div class="site-footer-legal">
       © {new Date().getFullYear()} North Florida Youth Lacrosse League · 501(c)(3) nonprofit · EIN 83-2612765
