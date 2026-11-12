@@ -117,46 +117,34 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
         <img src="/logo.png" alt="NFYLL" width="48" height="41" class="age-logo" loading="lazy" />
         <h2>Age Groups</h2>
       </div>
+      <p class="age-lead">Start with your child's grade this school year, 2026–27. Find the grade below to see the age group.</p>
+
+      <ul class="age-cards">
+        {nfyllAgeGroups.map((g) => (
+          <li class={`age-card band-${g.group}`}>
+            <span class="age-card-grade">{g.grade}</span>
+            <span class="age-card-group">{g.group}</span>
+            <span class="age-card-classes">Classes of {g.graduation}</span>
+            <span class="age-card-born">Born {g.born}</span>
+          </li>
+        ))}
+      </ul>
+
       <p>
-        Start with your child's grade this school year, 2026–27. The grade shows which age group to look at, and
-        the player's date of birth decides the group.
-      </p>
-      <p>
-        The dates run from September 1 to August 31. The September 1 that counts is the start of this school
-        year, September 1, 2026, so a player's group does not change during the spring season.
-      </p>
-      <p>
-        NFYLL plays in five two-year age groups so that clubs have enough players to field teams. Each group
-        covers two years of the USA Lacrosse age table.
+        A player's date of birth decides the group. The dates run from September 1, 2026, the start of this
+        school year, so a player's group does not change during the spring season. NFYLL plays in five two-year
+        age groups so that clubs have enough players to field teams.
       </p>
 
-      <div class="age-table-wrap" role="region" aria-labelledby="age-summary-caption" tabindex="0">
-        <table class="age-table age-summary">
-          <caption id="age-summary-caption">NFYLL Age Groups, Spring 2027</caption>
-          <thead>
-            <tr>
-              <th scope="col">Grade This School Year</th>
-              <th scope="col">Age Group</th>
-              <th scope="col">Born</th>
-              <th scope="col">Graduation Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            {nfyllAgeGroups.map((g) => (
-              <tr>
-                <th scope="row">{g.grade}</th>
-                <td><span class={`age-chip band-${g.group}`}>{g.group}</span></td>
-                <td>{g.born}</td>
-                <td>{g.graduation}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
+      <h3 class="age-subheading">Check a Birth Date</h3>
+      <ul class="age-legend">
+        {nfyllAgeGroups.map((g) => (
+          <li><span class={`age-swatch band-${g.group}`} aria-hidden="true"></span>{g.grade} · {g.group}</li>
+        ))}
+      </ul>
       <div class="age-table-wrap" role="region" aria-labelledby="age-grid-caption" tabindex="0">
         <table class="age-table age-grid">
-          <caption id="age-grid-caption">Check by Birth Month and Birth Year</caption>
+          <caption id="age-grid-caption">Age Group by Birth Month and Birth Year</caption>
           <thead>
             <tr>
               <th scope="col">Birth Month</th>
@@ -350,15 +338,34 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
   .age-table thead th { background: var(--sky-wash); color: var(--deep-river); }
   .age-table tbody th { text-align: left; color: var(--deep-river); font-weight: 600; }
   .age-table tbody tr:last-child th, .age-table tbody tr:last-child td { border-bottom: none; }
-  .age-summary td, .age-summary thead th { text-align: left; }
+  .age-lead { font-size: 1.05rem; }
+  .age-cards {
+    list-style: none; margin: 1.25rem 0 1.25rem; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem;
+  }
+  .age-card {
+    display: flex; flex-direction: column; gap: 0.35rem;
+    border-radius: 10px; padding: 1.1rem 1rem 1rem;
+  }
+  .age-card-grade { font-size: 1.45rem; font-weight: 800; line-height: 1.15; }
+  .age-card-group { font-size: 1.15rem; font-weight: 700; }
+  .age-card-classes { font-size: 0.95rem; font-weight: 600; }
+  .age-card-born { font-size: 0.8rem; line-height: 1.35; }
+  .age-subheading { margin: 2rem 0 0.5rem; font-size: 1.1rem; color: var(--deep-river); }
+  .age-legend {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.88rem; color: var(--ink);
+  }
+  .age-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .age-swatch { display: inline-block; width: 0.95rem; height: 0.95rem; border-radius: 3px; }
   .age-grid td { font-weight: 700; min-width: 3.2rem; border-left: 1px solid rgba(255, 255, 255, 0.6); }
   .age-grid td.blank { background: #FAFBFC; }
-  .age-chip { display: inline-block; min-width: 3.2rem; text-align: center; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 700; }
-  .band-14U { background: var(--deep-river); color: var(--white); }
-  .band-12U { background: var(--river-blue); color: var(--white); }
-  .band-10U { background: var(--sky-wash-deep); color: var(--deep-river); }
-  .band-8U { background: var(--sand-gold); color: var(--deep-river); }
-  .band-6U { background: var(--sunshine-soft); color: var(--deep-river); }
+  /* Five distinct hues, one per group; text contrast is WCAG AA or better on each. */
+  .band-14U { background: #1D4E89; color: #FFFFFF; }
+  .band-12U { background: #1B7340; color: #FFFFFF; }
+  .band-10U { background: #B02A37; color: #FFFFFF; }
+  .band-8U { background: #663A96; color: #FFFFFF; }
+  .band-6U { background: #F2C230; color: #103657; }
 
   /* Register */
   .register { margin-top: 2.5rem; }
