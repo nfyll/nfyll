@@ -124,7 +124,7 @@ const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
           <li class={`age-card band-${g.group}`}>
             <span class="age-card-grade">{g.grade.map((p) => (<>{p.text}{p.sup && <sup>{p.sup}</sup>}</>))}</span>
             <span class="age-card-group">{g.group}</span>
-            <span class="age-card-classes">Graduation Years <span class="age-card-years">{g.graduation}</span></span>
+            <span class="age-card-classes">Graduation Years: <span class="age-card-years">{g.graduation}</span></span>
             <span class="age-card-born">Born {g.born}</span>
           </li>
         ))}

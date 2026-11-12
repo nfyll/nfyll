@@ -16,14 +16,14 @@ export type GradePart = { text: string; sup?: string };
 /**
  * Summary rows, led by grade as a quick reference. The grade only points to the group;
  * the player's date of birth decides it. `grade` reads as plain text when joined
- * (e.g. "7th & 8th Grade"); the `sup` parts are shown as superscript ordinals.
+ * (e.g. "Grades: 7th & 8th"); the `sup` parts are shown as superscript ordinals.
  */
 export const nfyllAgeGroups: { grade: GradePart[]; group: NfyllAgeGroup; born: string; graduation: string }[] = [
-  { grade: [{ text: '7', sup: 'th' }, { text: ' & 8', sup: 'th' }, { text: ' Grade' }], group: '14U', born: 'September 1, 2012 – August 31, 2014', graduation: '2031 & 2032' },
-  { grade: [{ text: '5', sup: 'th' }, { text: ' & 6', sup: 'th' }, { text: ' Grade' }], group: '12U', born: 'September 1, 2014 – August 31, 2016', graduation: '2033 & 2034' },
-  { grade: [{ text: '3', sup: 'rd' }, { text: ' & 4', sup: 'th' }, { text: ' Grade' }], group: '10U', born: 'September 1, 2016 – August 31, 2018', graduation: '2035 & 2036' },
-  { grade: [{ text: '1', sup: 'st' }, { text: ' & 2', sup: 'nd' }, { text: ' Grade' }], group: '8U', born: 'September 1, 2018 – August 31, 2020', graduation: '2037 & 2038' },
-  { grade: [{ text: 'Kindergarten & Pre-K' }], group: '6U', born: 'September 1, 2020 – August 31, 2022', graduation: '2039 & 2040' },
+  { grade: [{ text: 'Grades: 7', sup: 'th' }, { text: ' & 8', sup: 'th' }], group: '14U', born: 'September 1, 2012 – August 31, 2014', graduation: '2031 & 2032' },
+  { grade: [{ text: 'Grades: 5', sup: 'th' }, { text: ' & 6', sup: 'th' }], group: '12U', born: 'September 1, 2014 – August 31, 2016', graduation: '2033 & 2034' },
+  { grade: [{ text: 'Grades: 3', sup: 'rd' }, { text: ' & 4', sup: 'th' }], group: '10U', born: 'September 1, 2016 – August 31, 2018', graduation: '2035 & 2036' },
+  { grade: [{ text: 'Grades: 1', sup: 'st' }, { text: ' & 2', sup: 'nd' }], group: '8U', born: 'September 1, 2018 – August 31, 2020', graduation: '2037 & 2038' },
+  { grade: [{ text: 'Grades: K & Pre-K' }], group: '6U', born: 'September 1, 2020 – August 31, 2022', graduation: '2039 & 2040' },
 ];
 
 export const ageChartBirthYears = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022] as const;
