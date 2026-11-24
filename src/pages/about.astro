@@ -18,7 +18,7 @@ const divisionLabel = (lo: number, hi: number, age: string) => {
     <div class="container">
       <span class="eyebrow">ABOUT THE LEAGUE</span>
       <h1>How NFYLL works</h1>
-      <p class="lede">{clubCountWordTitle} independent youth clubs across northeast Florida. One Saturday-morning venue. One spring season a year. Boys, grades PK through 8.</p>
+      <p class="lede">{clubCountWordTitle} independent youth clubs across northeast Florida. One Saturday-morning venue. One spring season a year. Boys and girls, grades PK through 8.</p>
     </div>
   </section>
 
@@ -45,37 +45,39 @@ const divisionLabel = (lo: number, hi: number, age: string) => {
 
     <section>
       <h2>Divisions &amp; formats</h2>
-      <p class="lede">Game formats scale with age. Younger kids play small-sided; older kids play full-field 10v10.</p>
+      <p class="lede">Game formats scale with age. Younger kids play small-sided; older kids play full-field. Each age group has a standard division, and more divisions are offered for Spring 2027.</p>
       <div class="divisions-table">
         <div class="div-row div-row--head">
-          <span>Division</span><span>Format</span><span>What it means</span>
+          <span>Age group</span><span>Standard division</span><span>What it means</span>
         </div>
         <div class="div-row">
-          <span><strong>{divisionLabel(-1, 0, '6U')}</strong></span>
-          <span class="format format-4v4">4v4</span>
+          <span><strong>{divisionLabel(-1, 0, '6U')}</strong><small class="also">New division for Spring 2027</small></span>
+          <span class="format format-4v4">Co-ed 4v4</span>
           <span>Co-ed, small-sided, sponge ball, goalies, no contact. Protective goggles only: no helmets, pads or gloves. The point is getting comfortable with a stick and a ball.</span>
         </div>
         <div class="div-row">
-          <span><strong>{divisionLabel(1, 2, '8U')}</strong></span>
-          <span class="format format-4v4">4v4</span>
+          <span><strong>{divisionLabel(1, 2, '8U')}</strong><small class="also">New divisions: Boys 7v7 · Boys Sixes · Girls 4v4</small></span>
+          <span class="format format-4v4">Boys 4v4</span>
           <span>Small-sided, goalies, no body or stick checks. The point is touches on the ball.</span>
         </div>
         <div class="div-row">
-          <span><strong>{divisionLabel(3, 4, '10U')}</strong></span>
-          <span class="format format-7v7">7v7</span>
+          <span><strong>{divisionLabel(3, 4, '10U')}</strong><small class="also">New divisions: Boys Sixes · Girls 8v8</small></span>
+          <span class="format format-7v7">Boys 7v7</span>
           <span>Half-field play, goalies, light contact. Bridge between learning the sport and full-field rules.</span>
         </div>
         <div class="div-row">
-          <span><strong>{divisionLabel(5, 6, '12U')}</strong></span>
-          <span class="format format-10v10">10v10</span>
+          <span><strong>{divisionLabel(5, 6, '12U')}</strong><small class="also">New divisions: Boys 7v7 · Boys Sixes · Girls 12v12</small></span>
+          <span class="format format-10v10">Boys 10v10</span>
           <span>Full-sided rules with full equipment. Closest to high-school lacrosse, scaled to the age group.</span>
         </div>
         <div class="div-row">
-          <span><strong>{divisionLabel(7, 8, '14U')}</strong></span>
-          <span class="format format-10v10">10v10</span>
+          <span><strong>{divisionLabel(7, 8, '14U')}</strong><small class="also">New divisions: Boys 7v7 · Boys Sixes · Girls 12v12</small></span>
+          <span class="format format-10v10">Boys 10v10</span>
           <span>Full-sided. This is where rec-league players bridge into middle-school and travel programs.</span>
         </div>
       </div>
+      <p class="division-note">New division. Each division requires at least 4 teams in order to go ahead. The league confirms two weeks before the first game. If it does not go ahead, your team can move to another division or get a full refund.</p>
+      <p class="division-note">Every team in every division plays with a goalie. Girls may play on any Boys team.</p>
     </section>
 
     <section>
@@ -165,7 +167,7 @@ const divisionLabel = (lo: number, hi: number, age: string) => {
   }
   .div-row {
     display: grid;
-    grid-template-columns: 240px 90px 1fr;
+    grid-template-columns: 260px 110px 1fr;
     gap: 1rem;
     align-items: center;
     padding: 0.85rem 1rem;
@@ -190,7 +192,11 @@ const divisionLabel = (lo: number, hi: number, age: string) => {
     font-weight: 600;
     letter-spacing: 0.04em;
     text-align: center;
+    white-space: nowrap;
+    justify-self: start;
   }
+  .also { display: block; margin-top: 0.2rem; color: var(--muted); font-size: 0.8rem; font-weight: 400; }
+  .division-note { margin: 0.75rem 0 0; color: var(--muted); font-size: 0.9rem; }
   .format-3v3, .format-4v4 { background: var(--sand-gold-soft); color: #8a5a00; }
   .format-7v7 { background: var(--sunshine-soft); color: #b04a13; }
   .format-10v10 { background: rgba(27, 77, 126, 0.10); color: var(--river-blue); }
