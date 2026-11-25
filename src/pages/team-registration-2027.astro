@@ -1,11 +1,8 @@
 ---
 /*
- * DRAFT FOR REVIEW — not published. Spring 2027 team registration.
+ * Spring 2027 team registration. Wording approved by the league president 2026-11-25; published the same day.
  *
- * Kept out of the site on purpose until the league president approves it:
- *   - not in Base.astro's nav or footer, not linked from any page;
- *   - <meta name="robots" content="noindex"> below;
- *   - the site generates no sitemap (no @astrojs/sitemap, no sitemap.xml or robots.txt in public/).
+ * Linked from the Spring 2027 page. The link to the registration app is added when registration opens.
  * Every word on the page lives in src/data/seasons/spring-2027-team-registration.ts.
  */
 import Base from '../layouts/Base.astro';
@@ -33,11 +30,6 @@ const keyDates: Array<{ date: string; label: string; meta: string; accent?: bool
 ];
 ---
 <Base title={P.pageTitle} description={P.metaDescription} active="">
-  <meta slot="head" name="robots" content="noindex" />
-
-  <aside class="draft-ribbon" role="note">
-    <div class="container"><strong>Draft for Review.</strong> Not published.</div>
-  </aside>
 
   <section class="page-hero">
     <div class="container">
