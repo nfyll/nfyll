@@ -1,0 +1,457 @@
+---
+/*
+ * Spring 2027 team registration. Wording approved by the league president 2026-11-25; published the same day.
+ *
+ * Linked from the Spring 2027 page. The link to the registration app is added when registration opens.
+ * Every word on the page lives in src/data/seasons/spring-2027-team-registration.ts.
+ */
+import Base from '../layouts/Base.astro';
+import { formatSeasonDate } from '../data/seasons/spring-2027';
+import {
+  APPROVED,
+  DIVISIONS,
+  PROPOSED as P,
+  TEAM_FIELDS,
+  TEAM_REGISTRATION_DATES as D,
+  formatFee,
+} from '../data/seasons/spring-2027-team-registration';
+
+const monthOf = (iso: string) => formatSeasonDate(iso, { month: 'short' });
+const dayOf = (iso: string) => formatSeasonDate(iso, { day: 'numeric' });
+
+const keyDates: Array<{ date: string; label: string; meta: string; accent?: boolean }> = [
+  { date: D.registrationOpens, label: P.dateOpens, meta: formatSeasonDate(D.registrationOpens), accent: true },
+  { date: D.registrationCloses, label: P.dateCloses, meta: formatSeasonDate(D.registrationCloses) },
+  { date: D.newDivisionsConfirmedBy, label: P.dateNewDivisions, meta: formatSeasonDate(D.newDivisionsConfirmedBy) },
+  { date: D.practicesWeekOf, label: P.datePractices, meta: P.datePracticesMeta },
+  { date: D.scheduleOutBy, label: P.dateSchedule, meta: P.dateScheduleMeta },
+  { date: D.openingDay, label: P.dateOpeningDay, meta: formatSeasonDate(D.openingDay) },
+  { date: D.jamboree, label: P.dateJamboree, meta: formatSeasonDate(D.jamboree) },
+];
+---
+<Base title={P.pageTitle} description={P.metaDescription} active="">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">{P.heroEyebrow}</span>
+      <h1>{P.heroHeading}</h1>
+      <p class="lede">{P.heroWhoRegisters} {P.heroFamilies}</p>
+      <p class="opens-notice" role="status">{P.opensNotice}</p>
+      <div class="cta-row">
+        <a class="btn btn-text" href="/clubs">{P.heroFindClubLink}</a>
+        <a class="btn btn-text" href="#divisions">{P.heroDivisionsLink}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="glance" aria-labelledby="glance-heading">
+      <h2 id="glance-heading" class="visually-hidden">{P.glanceHeading}</h2>
+      <div class="glance-card glance-card--accent">
+        <span class="glance-eyebrow">{P.glanceOpensLabel}</span>
+        <h3>{formatSeasonDate(D.registrationOpens)}</h3>
+        <p>{P.glanceOpensText}</p>
+      </div>
+      <div class="glance-card">
+        <span class="glance-eyebrow">{P.glanceClosesLabel}</span>
+        <h3>{formatSeasonDate(D.registrationCloses)}</h3>
+        <p>{P.glanceClosesText}</p>
+      </div>
+      <div class="glance-card">
+        <span class="glance-eyebrow">{P.glanceNewDivisionsLabel}</span>
+        <h3>{formatSeasonDate(D.newDivisionsConfirmedBy)}</h3>
+        <p>{P.glanceNewDivisionsText}</p>
+      </div>
+      <div class="glance-card">
+        <span class="glance-eyebrow">{P.glanceOpeningDayLabel}</span>
+        <h3>{formatSeasonDate(D.openingDay)}</h3>
+        <p>{P.glanceOpeningDayText}</p>
+      </div>
+    </section>
+
+    <section id="dates" class="dates">
+      <h2>{P.datesHeading}</h2>
+      <ol class="day-list">
+        {keyDates.map((d) => (
+          <li class={`day-row${d.accent ? ' day-row--accent' : ''}`}>
+            <span class="day-date" aria-hidden="true">
+              <span class="day-month">{monthOf(d.date)}</span>
+              <span class="day-num">{dayOf(d.date)}</span>
+            </span>
+            <span class="day-body">
+              <strong>{d.label}</strong>
+              <span class="day-meta">{d.meta}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section id="divisions" class="divisions">
+      <h2>{P.divisionsHeading}</h2>
+      <p class="lede">{P.divisionsLede}</p>
+      <div class="fee-table-wrap">
+        <table class="fee-table">
+          <caption>{P.tableCaption}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{P.colAgeGroup}</th>
+              <th scope="col">{P.colGrades}</th>
+              <th scope="col">{P.colPlayers}</th>
+              <th scope="col">{P.colFormat}</th>
+              <th scope="col" class="num">{P.colFee}</th>
+              <th scope="col">{P.colNote}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DIVISIONS.map((d) => (
+              <tr class={d.standard ? '' : 'is-new'}>
+                <th scope="row" data-label={P.colAgeGroup}>{d.ageGroup}</th>
+                <td data-label={P.colGrades}>{d.grades}</td>
+                <td data-label={P.colPlayers}>{d.players}</td>
+                <td data-label={P.colFormat}>{d.format}</td>
+                <td data-label={P.colFee} class="num">{formatFee(d.feeDollars)}</td>
+                <td data-label={P.colNote} class={d.standard ? 'note-empty' : ''}>
+                  {!d.standard && <span class="new-tag">{P.newDivisionTag}</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="new-division-note">{APPROVED.newDivisionNote}</p>
+    </section>
+
+    <section class="rules">
+      <h2>{P.rulesHeading}</h2>
+      <ul class="rules-list">
+        <li>{P.rulesGoalies}</li>
+        <li>{P.rulesGirlsOnBoys}</li>
+        <li>{P.rulesBoysOnGirls}</li>
+        <li>{P.rulesField}</li>
+      </ul>
+    </section>
+
+    <section class="how">
+      <h2>{P.howHeading}</h2>
+      <ol class="steps">
+        <li class="step">
+          <h3>{P.stepProgramHeading}</h3>
+          <p>{P.stepProgramText}</p>
+          <p class="approved-note">{APPROVED.newProgramNote}</p>
+        </li>
+        <li class="step">
+          <h3>{P.stepTeamsHeading}</h3>
+          <p>{P.stepTeamsText}</p>
+          <ul class="field-list">
+            {TEAM_FIELDS.map((f) => <li>{f}</li>)}
+          </ul>
+        </li>
+        <li class="step">
+          <h3>{P.stepCertifyHeading}</h3>
+          <p>{P.stepCertifyText}</p>
+          <blockquote class="certification"><p>{APPROVED.certification}</p></blockquote>
+        </li>
+        <li class="step">
+          <h3>{P.stepPayHeading}</h3>
+          <p>{P.stepPayText} {P.stepPayRegistered} {P.stepPayIncluded} {P.stepPayFee}</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="withdraw">
+      <h2>{P.withdrawHeading}</h2>
+      <p class="approved-note">{APPROVED.withdrawalRefundNote}</p>
+    </section>
+
+    <section class="register">
+      <div class="register-card">
+        <div>
+          <h2>{P.closingHeading}</h2>
+          <p>{P.closingText}</p>
+        </div>
+        <p class="opens-notice opens-notice--dark">{P.opensNotice}</p>
+      </div>
+      <p class="fineprint">{P.closingContact} <a href="/contact">{P.closingContactLink}</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  h1, h2, h3 { text-wrap: balance; }
+  h2 { margin: 2.75rem 0 0.75rem; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  .draft-ribbon {
+    background: var(--sand-gold);
+    color: var(--deep-river);
+    font-size: 0.9rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(16, 54, 87, 0.15);
+  }
+
+  .page-hero {
+    background: linear-gradient(180deg, var(--sky-wash), var(--sky-wash-deep));
+    border-bottom: 1px solid var(--hairline);
+    padding: 3rem 0 2.5rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+    margin: 0.5rem 0 0.9rem;
+    max-width: 18ch;
+  }
+  .page-hero .lede { color: var(--ink); font-size: 1.08rem; max-width: 680px; margin: 0 0 1.25rem; }
+
+  /* Plain, disabled-looking notice in place of a registration button. Not a link. */
+  .opens-notice {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.7rem 1.15rem;
+    border: 1px dashed var(--muted);
+    border-radius: 6px;
+    background: #EEF1F4;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: default;
+  }
+  .opens-notice--dark {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: var(--white);
+  }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; align-items: center; }
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-text { color: var(--river-blue); padding: 0.5rem 0; }
+  .btn-text:hover { color: var(--sunshine); }
+
+  .lede { color: var(--muted); max-width: 680px; }
+
+  /* At a glance */
+  .glance {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2.25rem 0 0;
+  }
+  @media (max-width: 900px) { .glance { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .glance { grid-template-columns: 1fr; } }
+  .glance-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.15rem 1.2rem;
+    box-shadow: var(--shadow-card);
+  }
+  .glance-card--accent { border-top: 3px solid var(--sunshine); }
+  .glance-eyebrow {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .glance-card h3 { margin: 0.35rem 0 0.4rem; font-size: 1.2rem; }
+  .glance-card p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+  /* Key dates */
+  .dates { scroll-margin-top: 5rem; }
+  .day-list {
+    list-style: none; margin: 1.25rem 0 0; padding: 0;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .day-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .day-row:last-child { border-bottom: none; }
+  .day-date {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 56px; height: 56px;
+    border-radius: 8px;
+    background: var(--sky-wash);
+    color: var(--deep-river);
+    line-height: 1;
+  }
+  .day-month { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .day-num {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.45rem; font-weight: 700; margin-top: 0.2rem;
+  }
+  .day-body { display: flex; flex-direction: column; min-width: 0; }
+  .day-body strong { color: var(--deep-river); font-size: 1rem; }
+  .day-meta { color: var(--muted); font-size: 0.88rem; }
+  .day-row--accent { background: var(--sunshine-soft); }
+  .day-row--accent .day-date { background: var(--sunshine); color: var(--white); }
+  @media (max-width: 480px) {
+    .day-row { grid-template-columns: 56px 1fr; gap: 0.85rem; padding: 0.75rem 0.9rem; }
+  }
+
+  /* Divisions and fees */
+  .divisions { scroll-margin-top: 5rem; }
+  .fee-table-wrap {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    margin-top: 1rem;
+    box-shadow: var(--shadow-card);
+  }
+  .fee-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+  .fee-table caption {
+    caption-side: top; text-align: left;
+    padding: 0.8rem 1rem 0.4rem;
+    font-weight: 700; color: var(--deep-river);
+  }
+  .fee-table th, .fee-table td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--hairline);
+    text-align: left;
+  }
+  .fee-table thead th { background: var(--sky-wash); color: var(--deep-river); font-size: 0.85rem; }
+  .fee-table tbody th { color: var(--deep-river); font-weight: 700; }
+  .fee-table tbody tr:last-child th, .fee-table tbody tr:last-child td { border-bottom: none; }
+  .fee-table .num { text-align: right; white-space: nowrap; }
+  .new-tag {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.22rem 0.55rem; border-radius: 999px; white-space: nowrap;
+    background: var(--sand-gold-soft); color: var(--deep-river);
+    border: 1px solid rgba(16, 54, 87, 0.2);
+  }
+  .new-division-note {
+    margin: 0.9rem 0 0;
+    padding: 0.9rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--sand-gold);
+    border-radius: 8px;
+    max-width: 760px;
+  }
+
+  /* Phone: each row becomes a stacked card with its own labels. */
+  @media (max-width: 640px) {
+    .fee-table-wrap { background: transparent; border: none; box-shadow: none; }
+    .fee-table caption { padding: 0 0 0.6rem; }
+    .fee-table thead {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+    }
+    .fee-table, .fee-table tbody, .fee-table tr, .fee-table th, .fee-table td { display: block; }
+    .fee-table tbody tr {
+      background: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      margin-bottom: 0.65rem;
+      padding: 0.35rem 0;
+      box-shadow: var(--shadow-card);
+    }
+    .fee-table tbody tr.is-new { border-left: 3px solid var(--sand-gold); }
+    .fee-table tbody th, .fee-table tbody td {
+      display: flex; justify-content: space-between; gap: 1rem;
+      padding: 0.35rem 0.9rem;
+      border-bottom: none;
+      text-align: right;
+    }
+    .fee-table tbody th::before, .fee-table tbody td::before {
+      content: attr(data-label);
+      color: var(--muted); font-weight: 600; font-size: 0.82rem; text-align: left;
+    }
+    .fee-table tbody td.note-empty { display: none; }
+  }
+
+  /* Playing rules */
+  .rules-list {
+    margin: 0; padding: 1rem 1.2rem 1rem 2.4rem;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--river-blue);
+    border-radius: 8px;
+    max-width: 760px;
+  }
+  .rules-list li { margin: 0.3rem 0; }
+
+  /* How it works */
+  .steps {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 1rem;
+    counter-reset: step;
+  }
+  .step {
+    counter-increment: step;
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 1.1rem 1.2rem 1.1rem 3.6rem;
+    position: relative;
+    box-shadow: var(--shadow-card);
+  }
+  .step::before {
+    content: counter(step);
+    position: absolute; left: 1.1rem; top: 1.05rem;
+    width: 1.75rem; height: 1.75rem; border-radius: 999px;
+    background: var(--river-blue); color: var(--white);
+    font-weight: 700; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+  .step p { margin: 0 0 0.6rem; }
+  .step p:last-child { margin-bottom: 0; }
+  .approved-note {
+    padding: 0.7rem 0.9rem;
+    background: var(--sky-wash);
+    border-radius: 6px;
+    font-size: 0.94rem;
+  }
+  .field-list { margin: 0; padding-left: 1.2rem; }
+  .field-list li { margin: 0.15rem 0; }
+  .certification {
+    margin: 0;
+    padding: 0.8rem 1rem;
+    background: var(--sky-wash);
+    border-left: 3px solid var(--sunshine);
+    border-radius: 6px;
+    font-style: italic;
+  }
+  .certification p { margin: 0; }
+
+  .withdraw p { max-width: 760px; }
+
+  /* Closing card */
+  .register { margin-top: 2.5rem; }
+  .register-card {
+    display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between;
+    background: var(--deep-river);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 1.6rem 1.75rem;
+  }
+  .register-card > div { flex: 1 1 280px; }
+  .register-card h2 { color: var(--white); margin: 0 0 0.4rem; }
+  .register-card p { margin: 0; max-width: 560px; }
+  .fineprint { color: var(--muted); font-size: 0.88rem; margin: 0.9rem 0 0; }
+
+  @media (max-width: 480px) {
+    .page-hero { padding: 2.25rem 0 2rem; }
+    .register-card { padding: 1.3rem 1.2rem; }
+    .step { padding: 1rem 1rem 1rem 3.2rem; }
+    .step::before { left: 0.9rem; }
+  }
+</style>
