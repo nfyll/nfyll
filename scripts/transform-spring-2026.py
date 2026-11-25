@@ -100,7 +100,8 @@ with open(LO_CSV) as f:
             'awayTeamId': row['away_team'],
             'startsAt': starts_at,
             'venue': {'name': normalize_field(row['field']), 'address': 'Julington Creek Plantation Park, St Johns, FL'},
-            'status': 'final' if status_raw == 'final' else ('postponed' if status_raw == 'delayed' else status_raw),
+            # The season is over: a row the source export froze as 'live' (one jamboree game) is a finished game.
+            'status': 'final' if status_raw in ('final', 'live') else ('postponed' if status_raw == 'delayed' else status_raw),
         })
 
 # Build canonical season + program lists

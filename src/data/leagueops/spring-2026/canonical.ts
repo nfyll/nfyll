@@ -2530,6 +2530,6 @@ export const games: Game[] = [
       "name": "Field 5",
       "address": "Julington Creek Plantation Park, St Johns, FL"
     },
-    "status": "live"
+    "status": "final"
   }
 ];
