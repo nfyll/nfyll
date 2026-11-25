@@ -110,6 +110,12 @@ export const APPROVED = {
   /** Platform `CERTIFICATION_AT_REGISTRATION`. Approved 2026-11-22. */
   certification:
     'I certify that every coach and every player in this program will hold a current USA Lacrosse membership before taking part in any league event, and through the end of the season.',
+  /**
+   * Platform `WITHDRAWAL_REFUND_NOTE`. Approved 2026-11-24. Replaces the two PROPOSED withdrawal
+   * sentences that spoke of the first game.
+   */
+  withdrawalRefundNote:
+    'Before the game schedule is released, a team that withdraws gets back everything it paid. After the schedule is released, the refund may be reduced. The league sets the amount: for example, when a game cannot be rescheduled, its referees must still be paid.',
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -187,12 +193,12 @@ export const PROPOSED = {
   stepPayHeading: 'Pay Online',
   stepPayText: 'Pay online by card or bank account when you register each team.',
   stepPayRegistered: 'A team is registered once payment is confirmed.',
+  // PROPOSED, from the league president's words (2026-11-24): "Teams must be paid in order to be included in game schedule and confirmation of divisions".
+  stepPayIncluded: 'Teams must be paid to be included in the confirmation of divisions and in the game schedule.',
   stepPayFee: 'A processing fee applies to online payments.',
 
   // Withdrawing
   withdrawHeading: 'Withdrawing a Team',
-  withdrawBefore: 'A team that withdraws before the first game of the season gets back everything it paid.',
-  withdrawAfter: 'After the first game, the league reviews each case.',
 
   // Closing card
   closingHeading: `Registration Opens ${monthDay(D.registrationOpens)}`,

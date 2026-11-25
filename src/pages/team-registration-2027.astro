@@ -162,14 +162,14 @@ const keyDates: Array<{ date: string; label: string; meta: string; accent?: bool
         </li>
         <li class="step">
           <h3>{P.stepPayHeading}</h3>
-          <p>{P.stepPayText} {P.stepPayRegistered} {P.stepPayFee}</p>
+          <p>{P.stepPayText} {P.stepPayRegistered} {P.stepPayIncluded} {P.stepPayFee}</p>
         </li>
       </ol>
     </section>
 
     <section class="withdraw">
       <h2>{P.withdrawHeading}</h2>
-      <p>{P.withdrawBefore} {P.withdrawAfter}</p>
+      <p class="approved-note">{APPROVED.withdrawalRefundNote}</p>
     </section>
 
     <section class="register">
